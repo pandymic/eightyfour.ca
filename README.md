@@ -15,3 +15,4 @@ redirects) lives on the server, not in this repository.
 ## Licences
 
 - Site content, images and code: © 2026 Michal Pandyra. All rights reserved.
+- Fonts in `fonts/`: SIL Open Font License 1.1, self-hosted via [Fontsource](https://fontsource.org/). Licence texts are in [`LICENSES/`](LICENSES/).
