@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.pandymic.konbini",
+      "sha256_cert_fingerprints": [
+        "14:48:99:29:14:E2:B6:45:EB:D6:12:A3:E2:42:2E:3E:C5:9A:15:B2:BD:BD:43:49:93:8C:CD:CF:3C:93:BE:8B"
+      ]
+    }
+  }
+]
