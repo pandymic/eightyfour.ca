@@ -1,11 +1,14 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "com.pandymic.konbini",
       "sha256_cert_fingerprints": [
-        "14:48:99:29:14:E2:B6:45:EB:D6:12:A3:E2:42:2E:3E:C5:9A:15:B2:BD:BD:43:49:93:8C:CD:CF:3C:93:BE:8B"
+        "14:48:99:29:14:E2:B6:45:EB:D6:12:A3:E2:42:2E:3E:C5:9A:15:B2:BD:BD:43:49:93:8C:CD:CF:3C:93:BE:8B",
+        "DB:FB:45:59:05:F6:12:20:C2:81:DE:39:7B:A8:E0:25:FC:ED:96:B8:84:67:08:C6:1C:24:16:6F:9F:1E:AD:34"
       ]
     }
   }
