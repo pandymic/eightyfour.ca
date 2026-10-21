@@ -1,0 +1,185 @@
+DELVE: LICENCES AND CREDITS
+==========================
+https://eightyfour.ca/delve/
+
+Delve is free homebrew for the Nintendo DS by pandymic. It is an independent
+fan-made game, not affiliated with or endorsed by Nintendo. "Nintendo DS" is a
+trademark of Nintendo.
+
+This file lists every third-party piece in Delve with its author and licence,
+and carries the notices that the libraries linked into the ROM ask for.
+
+
+MUSIC (CC0 or public domain)
+----------------------------
+Calm and simple title music, Kosmo The Cat, CC0 1.0
+  https://opengameart.org/content/calm-and-simple-title-music   (title, menus)
+Wander in a dungeon, Kosmo The Cat, CC0 1.0
+  https://opengameart.org/content/wander-in-a-dungeon           (The Dungeon)
+Evil boss music, Kosmo The Cat, CC0 1.0
+  https://opengameart.org/content/evil-boss-music               (bosses)
+Piano tune, Beyond, public domain
+  https://modarchive.org/index.php?request=view_by_moduleid&query=213498   (the camp)
+Song0, Beyond, public domain
+  https://modarchive.org/index.php?request=view_by_moduleid&query=184094   (The Sunken Sewers)
+Ambient Starfield, Drozerix, public domain
+  https://modarchive.org/index.php?request=view_by_moduleid&query=174160   (The Crystal Caverns)
+Crusaders, JAM, public domain
+  https://modarchive.org/index.php?request=view_by_moduleid&query=177809   (The Molten Depths)
+
+The tracker modules' 16-bit samples were reduced to 8-bit to fit the DS's
+memory, and some samples were resampled for cleaner playback; the notes and
+arrangements are unchanged. "Public domain" is The Mod Archive's licence
+attribution: the composer has released the module to the public domain
+(https://modarchive.org/index.php?faq-licensing).
+
+CC0 1.0 Universal: https://creativecommons.org/publicdomain/zero/1.0/
+
+
+ART (CC0)
+---------
+Puny Characters, by Shade, CC0 1.0
+  https://opengameart.org/content/puny-characters
+16x16 Puny Dungeon Tileset, by Shade, CC0 1.0
+  https://opengameart.org/content/16x16-puny-dungeon-tileset
+16x16 Puny World Tileset, by Shade, CC0 1.0
+  https://opengameart.org/content/16x16-puny-world-tileset
+Miniworld Sprites, by Shade, CC0 1.0
+  https://opengameart.org/content/miniworld-sprites
+Victoria Bold, from "a package of 8 bit fonts for grafx2 and linux", by
+devurandom, CC0 1.0
+  https://opengameart.org/content/a-package-of-8-bit-fonts-for-grafx2-and-linux
+
+The art was cropped, recoloured and packed for the DS. The bat, the clutter,
+the effects, the flames, the lava and murk textures and the placeholder icons
+were drawn for Delve in the same palette. The sound effects are synthesized
+for Delve.
+
+
+SOFTWARE LINKED INTO delve.nds
+------------------------------
+Delve is built with BlocksDS (https://github.com/blocksds/sdk). The notices
+below follow BlocksDS's own guide to the licences of a binary built with it
+(the licenses guide in its repository, docs/content/docs/guides/licenses.md).
+
+1. Maxmod (audio; also in the default ARM7 program). ISC licence.
+
+   Copyright (C) 2008-2009 Mukunda Johnson (mukunda@maxmod.org)
+   Copyright (C) 2021-2025 Antonio Niño Díaz
+   Copyright (C) 2023 Lorenzooone (lollo.lollo.rbiz@gmail.com)
+
+   Permission to use, copy, modify, and/or distribute this software for any
+   purpose with or without fee is hereby granted, provided that the above
+   copyright notice and this permission notice appear in all copies.
+
+   THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+   WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+   MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+   ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+   WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+   ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+   OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+2. Nitro Engine (3D graphics). MIT licence.
+   https://github.com/AntonioND/nitro-engine
+
+   Copyright (c) 2008-2024 Antonio Niño Díaz
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy of
+   this software and associated documentation files (the "Software"), to deal in
+   the Software without restriction, including without limitation the rights to
+   use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+   the Software, and to permit persons to whom the Software is furnished to do so,
+   subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+   FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+   COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+   IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+   CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+3. libnds and the default ARM7 core (BlocksDS). zlib licence. No notice is
+   required in binary distributions; the licence is included for credit.
+
+   Copyright (C) 2005-2011 Michael Noland (joat)
+   Copyright (C) 2005-2013 Jason Rogers (dovoto)
+   Copyright (C) 2005-2021 Dave Murphy (WinterMute)
+   Copyright (C) 2006-2008 Michael Chisholm (Chishm)
+   Copyright (C) 2005-2007 Michael Noland (joat)
+   Copyright (C) 2010 Richard Eric M. Lope BSN RN (Relminator)
+   Copyright (C) 2017 fincs
+   Copyright (C) 2020-2023 Gericom
+   Copyright (C) 2023-2025 Adrian "asie" Siekierka
+   Copyright (C) 2023-2025 Antonio Niño Díaz
+   Copyright (C) 2023 Epicpkmn11
+   Copyright (C) 2023 profi200
+
+   This software is provided 'as-is', without any express or implied warranty. In
+   no event will the authors be held liable for any damages arising from the use of
+   this software.
+
+   Permission is granted to anyone to use this software for any purpose, including
+   commercial applications, and to alter it and redistribute it freely, subject to
+   the following restrictions:
+
+   1. The origin of this software must not be misrepresented; you must not claim
+      that you wrote the original software. If you use this software in a product,
+      an acknowledgment in the product documentation would be appreciated but is
+      not required.
+
+   2. Altered source versions must be plainly marked as such, and must not be
+      misrepresented as being the original software.
+
+   3. This notice may not be removed or altered from any source distribution.
+
+   The default ARM7 core: Copyright (c) 2023 Antonio Niño Díaz, zlib licence
+   (the same terms as above).
+
+   libnds includes FatFs by ChaN, under a BSD-style licence that needs no
+   attribution in binaries; its terms:
+
+   FatFs License
+
+   FatFs has being developped as a personal project of the author, ChaN. It is free from the code anyone else wrote at current release. Following code block shows a copy of the FatFs license document that heading the source files.
+
+   /*----------------------------------------------------------------------------/
+   /  FatFs - Generic FAT Filesystem Module  Rx.xx                               /
+   /-----------------------------------------------------------------------------/
+   /
+   / Copyright (C) 20xx, ChaN, all right reserved.
+   /
+   / FatFs module is an open source software. Redistribution and use of FatFs in
+   / source and binary forms, with or without modification, are permitted provided
+   / that the following condition is met:
+   /
+   / 1. Redistributions of source code must retain the above copyright notice,
+   /    this condition and the following disclaimer.
+   /
+   / This software is provided by the copyright holder and contributors "AS IS"
+   / and any warranties related to this software are DISCLAIMED.
+   / The copyright owner or contributors be NOT LIABLE for any damages caused
+   / by use of this software.
+   /----------------------------------------------------------------------------*/
+
+   Therefore FatFs license is one of the BSD-style licenses, but there is a significant feature. FatFs is mainly intended for embedded systems. In order to extend the usability for commercial products, the redistributions of FatFs in binary form, such as embedded code, binary library and any forms without source code, do not need to include about FatFs in the documentations. This is equivalent to the 1-clause BSD license. Of course FatFs is compatible with the most of open source software licenses include GNU GPL. When you redistribute the FatFs source code with changes or create a fork, the license can also be changed to GNU GPL, BSD-style license or any open source software license that not conflict with FatFs license.
+
+4. crts, the startup code (BlocksDS). Mozilla Public License 2.0.
+   The source code form of this code is governed by the terms of the MPL 2.0,
+   a copy of which is at https://www.mozilla.org/en-US/MPL/2.0/ ; the source
+   is available at https://codeberg.org/blocksds/sdk (directory sys/crts).
+
+5. picolibc (the C library). A mixture of 2- and 3-clause BSD and similar
+   permissive licences. Its notices are in COPYING.picolibc:
+   https://github.com/WonderfulToolchain/wf-picolibc/blob/wonderful/COPYING.picolibc
+   https://github.com/picolibc/picolibc
+
+6. libgcc (the compiler runtime). GNU GPL 3.0 with the GCC Runtime Library
+   Exception 3.1, which allows its use in programs under other terms:
+   https://www.gnu.org/licenses/gcc-exception-3.1.en.html
+
+Delve's own code and original art are copyright pandymic. Distribution of the
+game is free; its source is not currently published.
