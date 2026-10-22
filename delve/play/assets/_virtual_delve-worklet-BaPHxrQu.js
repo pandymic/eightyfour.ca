@@ -1,0 +1,1 @@
+var e=new URL(`music.worklet-BKz0Z_2J.js`,import.meta.url).href,t=null;export{t as worklet_src,e as worklet_url};
