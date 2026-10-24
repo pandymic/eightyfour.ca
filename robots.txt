@@ -1,0 +1,5 @@
+# eightyfour.ca
+User-agent: *
+Disallow: /konbini/api/
+
+Sitemap: https://eightyfour.ca/sitemap.xml
