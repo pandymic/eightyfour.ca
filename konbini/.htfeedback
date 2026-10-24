@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "title": "Feedback: Konbini Quest",
+  "intro": "Found a bug, have an idea, or just want to say what you think of Konbini Quest? Every message is read.",
+  "subject": "{type}: {summary}",
+  "replyTo": "email",
+  "name": "name",
+  "submit": "Send feedback",
+  "fields": [
+    {
+      "id": "type",
+      "type": "select",
+      "label": "What is it about?",
+      "required": true,
+      "placeholder": "Choose one",
+      "options": [
+        {
+          "value": "bug",
+          "label": "Bug report"
+        },
+        {
+          "value": "feedback",
+          "label": "Feedback or review"
+        },
+        {
+          "value": "request",
+          "label": "Feature request"
+        },
+        {
+          "value": "question",
+          "label": "Question"
+        },
+        {
+          "value": "other",
+          "label": "Something else"
+        }
+      ]
+    },
+    {
+      "id": "platform",
+      "type": "radio",
+      "label": "Where do you play?",
+      "required": true,
+      "options": [
+        {
+          "value": "web",
+          "label": "In the browser"
+        },
+        {
+          "value": "android",
+          "label": "Android app"
+        }
+      ]
+    },
+    {
+      "id": "summary",
+      "type": "text",
+      "label": "Summary",
+      "hint": "One line.",
+      "required": true,
+      "maxLength": 120,
+      "autocomplete": "off"
+    },
+    {
+      "id": "details",
+      "type": "textarea",
+      "label": "Details",
+      "required": true,
+      "maxLength": 2000,
+      "rows": 5
+    },
+    {
+      "id": "steps",
+      "type": "textarea",
+      "label": "Steps to reproduce",
+      "hint": "What did you do, step by step?",
+      "maxLength": 1500,
+      "rows": 4,
+      "showIf": {
+        "field": "type",
+        "in": [
+          "bug"
+        ]
+      }
+    },
+    {
+      "id": "expected",
+      "type": "textarea",
+      "label": "What did you expect to happen?",
+      "maxLength": 600,
+      "rows": 2,
+      "showIf": {
+        "field": "type",
+        "in": [
+          "bug"
+        ]
+      }
+    },
+    {
+      "id": "device",
+      "type": "text",
+      "label": "Device and browser",
+      "hint": "For example: iPhone 15, Safari; or Pixel 8, Android 15.",
+      "maxLength": 120,
+      "autocomplete": "off",
+      "showIf": {
+        "field": "type",
+        "in": [
+          "bug"
+        ]
+      }
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "label": "Name",
+      "maxLength": 64,
+      "autocomplete": "name"
+    },
+    {
+      "id": "email",
+      "type": "email",
+      "label": "E-mail",
+      "hint": "Only if you'd like a reply.",
+      "maxLength": 254,
+      "autocomplete": "email"
+    }
+  ]
+}

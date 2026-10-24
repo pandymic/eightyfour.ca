@@ -1,0 +1,199 @@
+{
+  "version": 1,
+  "title": "Feedback: Delve",
+  "intro": "Found a bug, have an idea, or just want to say what you think of Delve? Every message is read.",
+  "subject": "{type}: {summary}",
+  "replyTo": "email",
+  "name": "name",
+  "submit": "Send feedback",
+  "fields": [
+    {
+      "id": "type",
+      "type": "select",
+      "label": "What is it about?",
+      "required": true,
+      "placeholder": "Choose one",
+      "options": [
+        {
+          "value": "bug",
+          "label": "Bug report"
+        },
+        {
+          "value": "feedback",
+          "label": "Feedback or review"
+        },
+        {
+          "value": "request",
+          "label": "Feature request"
+        },
+        {
+          "value": "question",
+          "label": "Question"
+        },
+        {
+          "value": "other",
+          "label": "Something else"
+        }
+      ]
+    },
+    {
+      "id": "platform",
+      "type": "select",
+      "label": "Where do you play?",
+      "required": true,
+      "placeholder": "Choose one",
+      "options": [
+        {
+          "value": "browser",
+          "label": "In the browser"
+        },
+        {
+          "value": "android",
+          "label": "Android"
+        },
+        {
+          "value": "emulator",
+          "label": "Nintendo DS emulator"
+        },
+        {
+          "value": "hardware",
+          "label": "Nintendo DS or 3DS (flashcart)"
+        },
+        {
+          "value": "other",
+          "label": "Somewhere else"
+        }
+      ]
+    },
+    {
+      "id": "platform_other",
+      "type": "text",
+      "label": "Where?",
+      "maxLength": 80,
+      "autocomplete": "off",
+      "showIf": {
+        "field": "platform",
+        "equals": "other"
+      }
+    },
+    {
+      "id": "emulator",
+      "type": "text",
+      "label": "Which emulator?",
+      "hint": "For example: melonDS 1.0, DeSmuME.",
+      "maxLength": 80,
+      "autocomplete": "off",
+      "showIf": {
+        "field": "platform",
+        "equals": "emulator"
+      }
+    },
+    {
+      "id": "version",
+      "type": "text",
+      "label": "Game version",
+      "hint": "If you know it.",
+      "maxLength": 20,
+      "pattern": "v?\\d+(\\.\\d+){0,3}",
+      "patternHint": "A version number such as 1.2.0.",
+      "autocomplete": "off"
+    },
+    {
+      "id": "summary",
+      "type": "text",
+      "label": "Summary",
+      "hint": "One line.",
+      "required": true,
+      "maxLength": 120,
+      "autocomplete": "off"
+    },
+    {
+      "id": "details",
+      "type": "textarea",
+      "label": "Details",
+      "required": true,
+      "maxLength": 2000,
+      "rows": 5
+    },
+    {
+      "id": "steps",
+      "type": "textarea",
+      "label": "Steps to reproduce",
+      "hint": "What did you do, step by step? Which area or boss?",
+      "maxLength": 1500,
+      "rows": 4,
+      "showIf": {
+        "field": "type",
+        "in": [
+          "bug"
+        ]
+      }
+    },
+    {
+      "id": "expected",
+      "type": "textarea",
+      "label": "What did you expect to happen?",
+      "maxLength": 600,
+      "rows": 2,
+      "showIf": {
+        "field": "type",
+        "in": [
+          "bug"
+        ]
+      }
+    },
+    {
+      "id": "actual",
+      "type": "textarea",
+      "label": "What happened instead?",
+      "maxLength": 600,
+      "rows": 2,
+      "showIf": {
+        "field": "type",
+        "in": [
+          "bug"
+        ]
+      }
+    },
+    {
+      "id": "every_time",
+      "type": "radio",
+      "label": "Does it happen every time?",
+      "options": [
+        {
+          "value": "always",
+          "label": "Every time"
+        },
+        {
+          "value": "sometimes",
+          "label": "Sometimes"
+        },
+        {
+          "value": "once",
+          "label": "Only once"
+        }
+      ],
+      "showIf": {
+        "field": "type",
+        "in": [
+          "bug"
+        ]
+      }
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "label": "Name",
+      "maxLength": 64,
+      "autocomplete": "name"
+    },
+    {
+      "id": "email",
+      "type": "email",
+      "label": "E-mail",
+      "hint": "Only if you'd like a reply.",
+      "maxLength": 254,
+      "autocomplete": "email"
+    }
+  ]
+}
