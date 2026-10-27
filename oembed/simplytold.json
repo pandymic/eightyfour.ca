@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "type": "link",
+  "title": "Simply Told",
+  "author_name": "Michal Pandyra",
+  "author_url": "https://pandymic.com/",
+  "provider_name": "eightyfour.ca",
+  "provider_url": "https://eightyfour.ca/",
+  "thumbnail_url": "https://eightyfour.ca/assets/apps/simplytold/og.png?v=81f4b3cc1f",
+  "thumbnail_width": 1200,
+  "thumbnail_height": 630,
+  "cache_age": 86400
+}
