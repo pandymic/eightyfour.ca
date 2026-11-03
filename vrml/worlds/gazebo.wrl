@@ -1,0 +1,29 @@
+#VRML V2.0 utf8
+# gazebo.wrl: meant to be Inlined. Six columns and a hat.
+WorldInfo { title "Gazebo" }
+Group {
+  children [
+    Transform { translation  1.5 1 0     children DEF Col Shape {
+      appearance Appearance { material Material { diffuseColor 0.92 0.9 0.84 } }
+      geometry Cylinder { radius 0.12 height 2 } } }
+    Transform { translation  0.75 1  1.3 children USE Col }
+    Transform { translation -0.75 1  1.3 children USE Col }
+    Transform { translation -1.5 1 0     children USE Col }
+    Transform { translation -0.75 1 -1.3 children USE Col }
+    Transform { translation  0.75 1 -1.3 children USE Col }
+    Transform {
+      translation 0 2.55 0
+      children Shape {
+        appearance Appearance { material Material { diffuseColor 0.45 0.12 0.1 } }
+        geometry Cone { bottomRadius 2 height 1.1 }
+      }
+    }
+    Transform {
+      translation 0 0.05 0
+      children Shape {
+        appearance Appearance { material Material { diffuseColor 0.7 0.7 0.68 } }
+        geometry Cylinder { radius 1.9 height 0.1 }
+      }
+    }
+  ]
+}

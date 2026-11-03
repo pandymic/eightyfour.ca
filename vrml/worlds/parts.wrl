@@ -1,0 +1,58 @@
+#VRML V2.0 utf8
+# parts.wrl: a small parts catalog.
+# Other worlds borrow these with EXTERNPROTO "parts.wrl#Lamp".
+# Opened on its own, it shows one of each.
+
+PROTO Lamp [
+  field        SFVec3f position 0 0 0
+  exposedField SFColor glow     1 0.85 0.4
+  exposedField SFBool  on       TRUE
+] {
+  Transform {
+    translation IS position
+    children [
+      Transform {
+        translation 0 1 0
+        children Shape {
+          appearance Appearance { material Material { diffuseColor 0.12 0.12 0.12 specularColor 0.5 0.5 0.5 } }
+          geometry Cylinder { radius 0.05 height 2 }
+        }
+      }
+      Transform {
+        translation 0 2.1 0
+        children [
+          Shape {
+            appearance Appearance { material Material { diffuseColor 0 0 0 emissiveColor IS glow } }
+            geometry Sphere { radius 0.18 }
+          }
+          PointLight { on IS on color IS glow intensity 0.8 radius 6 attenuation 0 0.3 0 }
+        ]
+      }
+    ]
+  }
+}
+
+PROTO Bench [
+  field SFVec3f position 0 0 0
+  field SFRotation rotation 0 1 0 0
+  field SFColor wood 0.55 0.33 0.16
+] {
+  Transform {
+    translation IS position
+    rotation IS rotation
+    children [
+      Transform {
+        translation 0 0.45 0
+        children Shape {
+          appearance DEF Wood Appearance { material Material { diffuseColor IS wood } }
+          geometry Box { size 1.6 0.08 0.45 }
+        }
+      }
+      Transform { translation -0.7 0.22 0 children DEF Leg Shape { appearance USE Wood geometry Box { size 0.08 0.45 0.4 } } }
+      Transform { translation  0.7 0.22 0 children USE Leg }
+    ]
+  }
+}
+
+Lamp { position -1 0 0 }
+Bench { position 1 0 0 }

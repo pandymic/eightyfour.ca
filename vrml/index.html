@@ -1,0 +1,1876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VRML 2.0: The Annotated Homage</title>
+<meta name="description" content="An unofficial, interactive tribute to VRML 1.0 and VRML 97, with a working browser engine, live examples, scripting, and a workbench for building your own worlds. Runs entirely in your browser.">
+<link rel="stylesheet" href="css/book.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%23fdfcf8' stroke='%237a1f14' stroke-width='2'/%3E%3Cpath d='M12 12a1.5 1.5 0 0 1 1.5 1.5a3 3 0 0 1-3 3a4.5 4.5 0 0 1-4.5-4.5a6 6 0 0 1 6-6a7.5 7.5 0 0 1 7.5 7.5' fill='none' stroke='%237a1f14' stroke-width='2'/%3E%3C/svg%3E">
+<script src="/js/analytics.js?v=c8d5ab478f"></script></head>
+<body>
+
+<!-- =============================== COVER =============================== -->
+<header class="cover" id="top">
+  <div class="cover-top">
+    <span>Building Worlds by Hand</span>
+    <span>Second Edition, More or Less</span>
+  </div>
+  <div class="cover-art" id="cover-art"></div>
+  <div class="cover-band">
+    <span class="sub">Nodes, Routes, Scripts, and the Web That Almost Was</span>
+    <span class="cover-ed">Includes CD-ROM*</span>
+  </div>
+  <div class="cover-title">
+    <h1>VRML 2.0<small>The Annotated Homage</small></h1>
+    <div class="who">
+      <span class="press"><span class="press-logo"></span>Pandymic Press</span><br>
+      <small>*The CD-ROM is in Chapter 11.<br>You do not need a drive.</small>
+    </div>
+  </div>
+</header>
+
+<!-- =============================== CONTENTS =============================== -->
+<section class="page front" id="contents">
+  <div class="runhead"><span>Contents</span><span class="folio"></span></div>
+  <div class="ch-open">
+    <div class="ch-label">Table of</div>
+    <h1>Contents</h1>
+  </div>
+  <ol class="toc">
+    <li><a href="#preface"><span class="t">Preface</span></a><span class="dots"></span><span class="pg"></span></li>
+    <li class="part">Part I. Background</li>
+    <li><a href="#ch1"><span class="t">1. A Short History of a Long Dream</span></a><span class="dots"></span><span class="pg"></span></li>
+    <li><a href="#ch2"><span class="t">2. Hello, Cyberspace</span></a><span class="dots"></span><span class="pg"></span></li>
+    <li><a href="#ch3"><span class="t">3. Nodes, Fields, and the Scene Graph</span></a><span class="dots"></span><span class="pg"></span></li>
+    <li class="part">Part II. Building Things</li>
+    <li><a href="#ch4"><span class="t">4. Shapes</span></a><span class="dots"></span><span class="pg"></span></li>
+    <li><a href="#ch5"><span class="t">5. Appearance, Light, and Weather</span></a><span class="dots"></span><span class="pg"></span></li>
+    <li class="part">Part III. Making Things Happen</li>
+    <li><a href="#ch6"><span class="t">6. Things That Move</span></a><span class="dots"></span><span class="pg"></span></li>
+    <li><a href="#ch7"><span class="t">7. Being Somewhere</span></a><span class="dots"></span><span class="pg"></span></li>
+    <li><a href="#ch8"><span class="t">8. Scripting</span></a><span class="dots"></span><span class="pg"></span></li>
+    <li><a href="#ch9"><span class="t">9. Prototypes</span></a><span class="dots"></span><span class="pg"></span></li>
+    <li class="part">Part IV. Odds and Ends</li>
+    <li><a href="#ch10"><span class="t">10. VRML 1.0: The Separator Years</span></a><span class="dots"></span><span class="pg"></span></li>
+    <li><a href="#workbench"><span class="t">11. The Companion CD-ROM</span></a><span class="dots"></span><span class="pg"></span></li>
+    <li class="part">Appendixes</li>
+    <li><a href="#appA"><span class="t">A. Node Reference</span></a><span class="dots"></span><span class="pg"></span></li>
+    <li><a href="#appB"><span class="t">B. Inside This Browser</span></a><span class="dots"></span><span class="pg"></span></li>
+    <li><a href="#appC"><span class="t">C. Further Reading</span></a><span class="dots"></span><span class="pg"></span></li>
+    <li><a href="#colophon"><span class="t">Colophon</span></a><span class="dots"></span><span class="pg"></span></li>
+  </ol>
+</section>
+
+<!-- =============================== PREFACE =============================== -->
+<section class="page front" id="preface">
+  <div class="runhead"><span>Preface</span><span class="folio"></span></div>
+  <div class="ch-open">
+    <div class="ch-label">Preface</div>
+    <h1>Before We Begin</h1>
+  </div>
+
+  <p class="dropcap">In 1996 you could type about forty lines into a text editor, save the file with a <code>.wrl</code> extension, put it on a web server, and anyone with the right plug-in could walk around inside it. Not look at a picture of it. Walk around inside it. It would be slow, it would be ugly, and it would be absolutely thrilling.</p>
+
+  <p>That language was VRML, the Virtual Reality Modeling Language. This book is a tribute to it. It is also a working implementation: every example in these pages runs, live, inside this page, on a small VRML browser written from scratch in modern JavaScript on top of WebGL. No plug-in required. We checked.</p>
+
+  <p>You can read the book front to back, or you can skip to <a href="#workbench">Chapter 11</a>, where you will find the Workbench: an editor and viewer for writing your own worlds, saving them in your browser, and downloading them as real <code>.wrl</code> files that would have worked (mostly) in 1997.</p>
+
+  <h3>Who This Book Is For</h3>
+  <p>People who remember VRML and want to see it run again. People who never heard of it and wonder what all the fuss was about. People who like the idea of describing a 3D world in a text file and are a little tired of build tools. If you can edit HTML, you can write VRML. It was designed that way on purpose.</p>
+
+  <h3>Conventions Used in This Book</h3>
+  <p>The following typographical conventions are used:</p>
+  <ul>
+    <li><em>Italic</em> is used for new terms, filenames, and the occasional dramatic emphasis.</li>
+    <li><code>Constant width</code> is used for node names, field names, code, and anything you might type.</li>
+    <li><b>Bold node names</b> in listings are built-in VRML nodes.</li>
+  </ul>
+  <div class="note" data-icon="note"><p>This icon marks a note: a bit of background, a footnote that got ambitious, or a piece of history.</p></div>
+  <div class="note" data-icon="warn"><p>This icon marks a warning. Usually it means the spec says one thing and every browser of the era did another.</p></div>
+  <div class="note" data-icon="tip"><p>This icon marks a tip. Most tips are about the Workbench.</p></div>
+
+  <h3>How the Examples Work</h3>
+  <p>Each example has a numbered listing, followed by a gray box that looks like a browser plug-in waiting for permission to run. Click it. The world loads in place, with a small control bar on top. In keeping with tradition, we only let a few plug-ins run at once; open a fifth and the oldest one quietly goes back to sleep. Every listing also has an <em>Open in the Workbench</em> link, which copies it into the editor in Chapter 11 so you can break it.</p>
+
+  <p>The viewers support three ways of moving around, chosen from the control bar:</p>
+  <ul>
+    <li><b>Examine</b>: drag to orbit the scene, use the mouse wheel to zoom, right-drag or Shift-drag to pan.</li>
+    <li><b>Walk</b>: drag up and down to move forward and back, left and right to turn. The arrow keys and <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> also work once the view has focus.</li>
+    <li><b>Fly</b>: drag to look around, and use the keys to move along the direction you are facing. <kbd>Q</kbd> and <kbd>E</kbd> go down and up.</li>
+  </ul>
+  <p><kbd>Page Up</kbd> and <kbd>Page Down</kbd> step through a world's viewpoints, and the Snap button saves a screenshot, which is more than most 1996 browsers could manage.</p>
+
+  <h3>A Note About Running This Locally</h3>
+  <p>The book is a static web page. It needs to be served over HTTP because it uses JavaScript modules, and a couple of examples load files from the <em>worlds/</em> folder. Any static server will do. From the project folder:</p>
+  <pre class="listing"><span class="ln">python3 -m http.server 8000</span></pre>
+  <p>Then visit <code>http://localhost:8000/</code>. You will need a browser with WebGL 2, which by now is nearly all of them.</p>
+
+  <h3>Acknowledgments</h3>
+  <p>Thanks are due to everyone who argued on the <em>www-vrml</em> mailing list, wrote a browser, wrote a book, or posted a world on a personal home page between a "This page is under construction" banner and a hit counter. Thanks also to the 28.8 kbps modem, without which none of us would have learned patience.</p>
+</section>
+
+<!-- =============================== CHAPTER 1 =============================== -->
+<section class="page" id="ch1">
+  <div class="runhead"><span>Chapter 1: A Short History of a Long Dream</span><span class="folio"></span></div>
+  <div class="ch-open">
+    <div class="ch-label">Chapter <span class="n">1</span></div>
+    <h2>A Short History of a Long Dream</h2>
+    <p class="epigraph">The Web is a dull place for a body. Let us give it some rooms.<cite>Paraphrase of roughly every VRML talk ever given</cite></p>
+  </div>
+  <div class="in-this">
+    <h4>In this chapter</h4>
+    <ul><li>Geneva, 1994</li><li>Borrowing a file format</li><li>Moving Worlds</li><li>The browser wars, in 3D</li><li>What happened next</li></ul>
+  </div>
+
+  <p class="dropcap">The Web was barely a year into its public life when people started wanting to stand inside it. Hypertext was fine. Hypertext with pictures was better. But science fiction had already promised a <span class="term">cyberspace</span> you could walk through, and the people building the Web had read the same novels as everybody else.</p>
+
+  <h3>Geneva, 1994</h3>
+  <p>The usual version of the story goes like this. In early 1994, Mark Pesce and Tony Parisi built a prototype 3D web browser they called <em>Labyrinth</em>. At the first International Conference on the World Wide Web, held at CERN in Geneva in May 1994, there was a "birds of a feather" session about virtual reality interfaces to the Web. Pesce presented Labyrinth. Tim Berners-Lee and Dave Raggett were in the room. Out of that session came a name, <em>Virtual Reality Markup Language</em>, and a mailing list, <em>www-vrml</em>, hosted at <em>Wired</em> magazine.</p>
+  <p>The name lasted about as long as it took someone to point out that this was not a markup language. Nothing was being marked up. It became the Virtual Reality <em>Modeling</em> Language, and the acronym survived the change, which is the most important thing an acronym can do.</p>
+
+  <h3>Borrowing a File Format</h3>
+  <p>The mailing list wanted a specification quickly, and wisely chose not to invent one from nothing. Several existing 3D formats were proposed. The one selected was the ASCII file format of <em>Open Inventor</em>, a 3D toolkit from Silicon Graphics. Inventor files were readable text, they described a hierarchy of objects, and SGI was willing to let the community use the format. Gavin Bell of SGI did much of the work of adapting it, with Parisi and Pesce, and the VRML 1.0 specification was finished in 1995.</p>
+  <p>VRML 1.0 could describe a static scene: shapes, materials, lights, cameras, and links to other worlds. It could not describe anything that moved. You could fly through a world, but the world would not notice you were there. A clarified revision, VRML 1.0c, followed in early 1996.</p>
+
+  <div class="sidebar">
+    <div class="sb-title">Why Open Inventor Mattered</div>
+    <p>Inventor's format came with a mental model: a scene is a tree of <em>nodes</em>, each with named <em>fields</em>, and drawing the scene means walking the tree. That model survived into VRML 2.0, into X3D after it, and (in spirit) into most scene-graph libraries you can install today. If you have ever written <code>scene.add(mesh)</code>, you are standing on Inventor's shoulders, wearing VRML's shoes.</p>
+    <p>Inventor's quirks came along too. In 1.0, a <code>Material</code> node does not belong to a shape; it changes the "current material" for everything after it. Chapter 10 has some fun with that.</p>
+  </div>
+
+  <h3>Moving Worlds</h3>
+  <p>Everyone agreed that the next version needed behavior: things that move, things you can click, things that react. In 1996 the VRML community issued a call for proposals and got several, from some very large companies. Among them, if memory and the archives serve, were Microsoft's <em>ActiveVRML</em>, Sun's <em>HoloWeb</em>, and Apple's <em>Out of This World</em>. The winner, chosen by a vote of the community, was <em>Moving Worlds</em>, a proposal led by Silicon Graphics with Sony and others.</p>
+  <p>Moving Worlds threw out the 1.0 state machine and replaced it with self-contained nodes (a <code>Shape</code> owns its appearance and geometry), added <span class="term">events</span> and <span class="term">routes</span> for wiring nodes together, added <span class="term">sensors</span> for time and user input, and added <span class="term">prototypes</span> so authors could define new node types in VRML itself. For anything those could not express, there was the <code>Script</code> node, which could run Java or JavaScript.</p>
+  <p>The VRML 2.0 specification was released in August 1996, at SIGGRAPH in New Orleans. After some editing and the standards process, it became the international standard ISO/IEC 14772-1:1997, better known as <em>VRML97</em>. For our purposes, VRML 2.0 and VRML97 are the same language, and this book uses the names interchangeably, as did everyone at the time.</p>
+
+  <h3>The Browser Wars, in 3D</h3>
+  <p>To see a VRML world you needed a VRML browser, which usually meant a plug-in for Netscape Navigator or an ActiveX control for Internet Explorer. There were a lot of them. Some names you may remember:</p>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>Browser</th><th>From</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>WebSpace</td><td>Silicon Graphics, later TGS</td><td>An early VRML 1.0 browser, built on Inventor itself.</td></tr>
+      <tr><td>WebFX, then Live3D</td><td>Paper Software, then Netscape</td><td>Netscape bought Paper Software and shipped Live3D with Navigator 3.</td></tr>
+      <tr><td>Cosmo Player</td><td>SGI / Cosmo Software</td><td>The VRML 2.0 browser for many people. Its dashboard is a genre of nostalgia.</td></tr>
+      <tr><td>WorldView</td><td>Intervista</td><td>Microsoft licensed it as the VRML viewer for Internet Explorer.</td></tr>
+      <tr><td>Community Place</td><td>Sony</td><td>Leaned into shared, multi-user worlds.</td></tr>
+      <tr><td>Contact</td><td>blaxxun interactive</td><td>Multi-user worlds, avatars, chat.</td></tr>
+      <tr><td>Cortona</td><td>ParallelGraphics</td><td>Kept going long after most of the others had stopped.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>They disagreed with each other in small and maddening ways. The same world could look lovely in one browser, render half its textures upside down in another, and crash a third. Authors learned to test everywhere, then to give up and write "Best viewed with" on the page.</p>
+
+  <h3>What Happened Next</h3>
+  <p>VRML did not take over the Web. The reasons are easy to list in hindsight. Most people had slow modems and no 3D hardware. Plug-ins were a pain to install and a security worry. Building good 3D content was hard, and building it by hand in a text editor was harder. The companies that funded the big browsers changed direction, merged, or ran out of money.</p>
+  <p>But the ideas did not go anywhere. The Web3D Consortium (as the VRML Consortium renamed itself) carried VRML forward as <em>X3D</em>, which kept the node and field model and added an XML encoding. WebGL arrived in browsers around 2011, and suddenly the plug-in was unnecessary: the browser could draw 3D by itself. That is what this book's engine stands on. In a way, VRML finally got what it needed. It just got it about fifteen years late.</p>
+
+  <div class="note" data-icon="note"><p>The specification documents themselves are still published by the Web3D Consortium and are well worth reading. This book does not reproduce them; it points at them. See <a href="#appC">Appendix C</a>.</p></div>
+</section>
+
+<!-- =============================== CHAPTER 2 =============================== -->
+<section class="page" id="ch2">
+  <div class="runhead"><span>Chapter 2: Hello, Cyberspace</span><span class="folio"></span></div>
+  <div class="ch-open">
+    <div class="ch-label">Chapter <span class="n">2</span></div>
+    <h2>Hello, Cyberspace</h2>
+    <p class="epigraph">Our first world will contain one red ball. Do not be disappointed. It is a very good ball.</p>
+  </div>
+
+  <p class="dropcap">A VRML file is plain text. It starts with a header line, which tells the browser which version of the language follows, and then it lists nodes. That is the whole recipe. Here is the smallest world worth looking at.</p>
+
+  <figure class="example" id="ex-hello">
+    <figcaption><b>Example 2-1.</b> The obligatory red sphere</figcaption>
+    <script type="model/vrml">
+#VRML V2.0 utf8
+# Everything after a hash mark is a comment,
+# except the first line, which is a very important comment.
+
+Shape {
+  appearance Appearance {
+    material Material { diffuseColor 0.8 0.1 0.1 }
+  }
+  geometry Sphere { }
+}
+</script>
+  </figure>
+
+  <p>Let's go through it line by line, because every later example is built from the same parts.</p>
+  <p>The header <code>#VRML V2.0 utf8</code> must be the very first thing in the file, exactly as written. A browser reads it to decide whether it is looking at VRML 2.0 text in UTF-8 encoding or (if it says <code>#VRML V1.0 ascii</code>) the older language. Our browser speaks both.</p>
+  <p><code>Shape</code> is a node. A node has a type name, then a pair of braces, and between the braces a list of <span class="term">fields</span>, each a name followed by a value. A <code>Shape</code> has two fields: <code>appearance</code>, which says what the surface looks like, and <code>geometry</code>, which says what the object is. Both of those fields hold other nodes, which is how scenes become trees.</p>
+  <p>The <code>Sphere</code> has no fields listed, so it gets its defaults: a radius of 1. Every field of every node has a default, and the defaults were chosen so that leaving things out usually does something reasonable. You will come to rely on this.</p>
+  <p>Units are meters, by convention. Angles are radians, by law. The default camera sits at <code>0 0 10</code>, ten meters back along the Z axis, looking toward the origin, and the Y axis points up.</p>
+
+  <div class="note" data-icon="warn"><p>Leave out the <code>appearance</code> and the sphere still draws, but it is rendered unlit and pure white. VRML treats "no material" as "don't do lighting at all," which surprises everyone exactly once.</p></div>
+
+  <h3>Moving Things Around</h3>
+  <p>Shapes sit at the origin unless something moves them. The <code>Transform</code> node is a grouping node with a position, rotation, and scale. Everything inside its <code>children</code> field is moved along with it. Here is a second world with two shapes and some text.</p>
+
+  <figure class="example" id="ex-hello2">
+    <figcaption><b>Example 2-2.</b> Hello, World, with a planet</figcaption>
+    <script type="model/vrml">
+#VRML V2.0 utf8
+WorldInfo { title "Hello, World" }
+Background { skyColor 0.02 0.02 0.08 }
+
+Transform {
+  translation 0 1.1 0
+  children Shape {
+    appearance Appearance {
+      material Material { diffuseColor 0.15 0.35 0.85 specularColor 0.6 0.6 0.6 shininess 0.4 }
+    }
+    geometry Sphere { radius 0.9 }
+  }
+}
+
+Transform {
+  translation 0 -0.7 0
+  children Shape {
+    appearance Appearance {
+      material Material { diffuseColor 0 0 0 emissiveColor 1 0.85 0.3 }
+    }
+    geometry Text {
+      string [ "Hello, World", "(population: you)" ]
+      fontStyle FontStyle { family "SANS" justify "MIDDLE" size 0.6 }
+    }
+  }
+}
+</script>
+  </figure>
+
+  <p>A few new things showed up. <code>WorldInfo</code> gives the world a title; it has no effect on what you see. <code>Background</code> sets the color of the sky. The text uses <code>emissiveColor</code>, which makes a surface glow as though lit from within, so it reads clearly no matter how the light falls. And the <code>string</code> field holds a <em>list</em> of strings, written inside square brackets, one per line of text.</p>
+  <p>Try the Walk and Fly buttons. Try Wire, too, which shows you the triangles that the browser actually draws. A sphere is not really a sphere. Nothing is.</p>
+</section>
+
+<!-- =============================== CHAPTER 3 =============================== -->
+<section class="page" id="ch3">
+  <div class="runhead"><span>Chapter 3: Nodes, Fields, and the Scene Graph</span><span class="folio"></span></div>
+  <div class="ch-open">
+    <div class="ch-label">Chapter <span class="n">3</span></div>
+    <h2>Nodes, Fields, and the Scene Graph</h2>
+  </div>
+  <div class="in-this">
+    <h4>In this chapter</h4>
+    <ul><li>Field types</li><li>Kinds of fields</li><li>DEF and USE</li><li>Grouping nodes</li></ul>
+  </div>
+
+  <p class="dropcap">Everything in VRML is a node, and everything a node knows is in its fields. That sentence is most of the language. This chapter is the rest.</p>
+
+  <h3>Field Types</h3>
+  <p>Every field has a type, and the type decides how its value is written. Type names start with <code>SF</code> (single field, one value) or <code>MF</code> (multiple field, a list). An MF value is written inside square brackets with values separated by whitespace or commas; if the list has exactly one value, the brackets are optional.</p>
+
+  <div class="tbl">
+  <div class="cap"><i><b>Table 3-1.</b> VRML 2.0 field types</i></div>
+  <table>
+    <thead><tr><th>Type</th><th>Holds</th><th>Example value</th></tr></thead>
+    <tbody>
+      <tr><td><code>SFBool</code></td><td>TRUE or FALSE</td><td><code>TRUE</code></td></tr>
+      <tr><td><code>SFInt32</code>, <code>MFInt32</code></td><td>32-bit integers</td><td><code>[ 0 1 2 -1 ]</code></td></tr>
+      <tr><td><code>SFFloat</code>, <code>MFFloat</code></td><td>floating point numbers</td><td><code>0.5</code></td></tr>
+      <tr><td><code>SFTime</code>, <code>MFTime</code></td><td>seconds since midnight, January 1, 1970, GMT</td><td><code>0</code></td></tr>
+      <tr><td><code>SFString</code>, <code>MFString</code></td><td>UTF-8 text in double quotes</td><td><code>[ "one" "two" ]</code></td></tr>
+      <tr><td><code>SFVec2f</code>, <code>MFVec2f</code></td><td>2D vectors, often texture coordinates</td><td><code>0.5 1</code></td></tr>
+      <tr><td><code>SFVec3f</code>, <code>MFVec3f</code></td><td>3D vectors and points</td><td><code>0 1.6 10</code></td></tr>
+      <tr><td><code>SFColor</code>, <code>MFColor</code></td><td>RGB, each from 0 to 1</td><td><code>1 0.5 0</code></td></tr>
+      <tr><td><code>SFRotation</code>, <code>MFRotation</code></td><td>an axis and an angle in radians</td><td><code>0 1 0 1.5708</code></td></tr>
+      <tr><td><code>SFImage</code></td><td>width, height, components, then pixels</td><td><code>2 2 1 0xFF 0 0 0xFF</code></td></tr>
+      <tr><td><code>SFNode</code>, <code>MFNode</code></td><td>nodes, or <code>NULL</code></td><td><code>Box { }</code></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Rotations deserve a moment. <code>0 1 0 1.5708</code> means "turn around the Y axis by 1.5708 radians," which is 90 degrees, counterclockwise when you look down the axis toward the origin. You will type <code>1.5708</code> and <code>3.1416</code> so often that your fingers will learn them before your brain does.</p>
+
+  <h3>Four Kinds of Fields</h3>
+  <p>Fields also come in four <em>kinds</em>, which matter once things start moving in Chapter 6:</p>
+  <ul>
+    <li>A <code>field</code> is set in the file and never changes afterward.</li>
+    <li>An <code>eventIn</code> receives values while the world runs. You cannot set one in the file.</li>
+    <li>An <code>eventOut</code> sends values while the world runs.</li>
+    <li>An <code>exposedField</code> is all three at once: set it in the file, change it with an event called <code>set_<i>name</i></code>, and hear about the change from an event called <code><i>name</i>_changed</code>.</li>
+  </ul>
+  <p>Appendix A lists every field of every built-in node, with its kind, type, and default. It is generated from this browser's own internal tables, so if it is wrong there, it is wrong here too, and at least we are consistent.</p>
+
+  <h3>DEF and USE</h3>
+  <p>Any node can be given a name with <code>DEF</code>. Later in the file, <code>USE</code> puts that same node somewhere else in the tree. Not a copy: the very same node, appearing in two places. Change it once and both places change. The scene graph is therefore not strictly a tree. It is a directed acyclic graph, and if you say that at a party people will move away from you.</p>
+
+  <figure class="example" id="ex-temple">
+    <figcaption><b>Example 3-1.</b> A temple built from one column</figcaption>
+    <script type="model/vrml">
+#VRML V2.0 utf8
+NavigationInfo { type [ "EXAMINE", "ANY" ] }
+Viewpoint { position 0 2.5 13 orientation 1 0 0 -0.12 description "The approach" }
+Background { skyColor [ 0.35 0.55 0.9, 0.85 0.9 1 ] skyAngle 1.4 }
+
+# Define one column, named Column...
+Transform {
+  translation -3 1.6 1.5
+  children DEF Column Shape {
+    appearance DEF Marble Appearance {
+      material Material { diffuseColor 0.94 0.92 0.86 specularColor 0.3 0.3 0.3 shininess 0.3 }
+    }
+    geometry Cylinder { radius 0.28 height 3.2 }
+  }
+}
+# ...and USE it seven more times.
+Transform { translation -1 1.6  1.5 children USE Column }
+Transform { translation  1 1.6  1.5 children USE Column }
+Transform { translation  3 1.6  1.5 children USE Column }
+Transform { translation -3 1.6 -1.5 children USE Column }
+Transform { translation -1 1.6 -1.5 children USE Column }
+Transform { translation  1 1.6 -1.5 children USE Column }
+Transform { translation  3 1.6 -1.5 children USE Column }
+
+# The roof and the floor share the Marble appearance.
+Transform {
+  translation 0 3.45 0
+  children Shape { appearance USE Marble geometry Box { size 7.4 0.5 4.4 } }
+}
+Transform {
+  translation 0 -0.1 0
+  children Shape { appearance USE Marble geometry Box { size 8 0.2 5 } }
+}
+# Not the Parthenon. The budget was tight.
+</script>
+  </figure>
+
+  <p>Click Wire and count the triangles in the status bar. The browser draws eight columns, but there is only one <code>Cylinder</code> node, one <code>Appearance</code>, and one set of triangles in memory. In 1996 memory was precious and this was a big deal. It still is, a little.</p>
+
+  <h3>Grouping Nodes</h3>
+  <p>Nodes that hold children are called grouping nodes. You have met <code>Transform</code>. Its plainer sibling <code>Group</code> just holds things. <code>Switch</code> shows one of its children, chosen by number. <code>LOD</code> (level of detail) picks a child depending on how far away you are, so distant things can be drawn with fewer triangles. <code>Billboard</code> turns its children to face you. <code>Anchor</code> makes its children into a hyperlink. <code>Collision</code> was supposed to stop you walking through walls, and in this browser it does not, which makes it the most relaxing node in the language.</p>
+
+  <div class="sidebar">
+    <div class="sb-title">Order of Transformations</div>
+    <p>A <code>Transform</code> has five fields that combine into one matrix: <code>translation</code>, <code>rotation</code>, <code>scale</code>, <code>scaleOrientation</code>, and <code>center</code>. They are applied as if you first scaled (around <code>center</code>, along <code>scaleOrientation</code>), then rotated (around <code>center</code>), then translated. The order is fixed regardless of the order you write them in the file.</p>
+    <p>If you need a different order, nest one <code>Transform</code> inside another. Everybody does.</p>
+  </div>
+</section>
+
+<!-- =============================== CHAPTER 4 =============================== -->
+<section class="page" id="ch4">
+  <div class="runhead"><span>Chapter 4: Shapes</span><span class="folio"></span></div>
+  <div class="ch-open">
+    <div class="ch-label">Chapter <span class="n">4</span></div>
+    <h2>Shapes</h2>
+    <p class="epigraph">Four primitives, a face set, a grid, and a tube. You can build anything from those. People did. Some of it was good.</p>
+  </div>
+
+  <p class="dropcap">VRML 2.0 has ten geometry nodes. Four of them are primitives that need almost no explanation: <code>Box</code>, <code>Sphere</code>, <code>Cone</code>, and <code>Cylinder</code>. Each is centered on the origin and sized by a field or two.</p>
+
+  <figure class="example" id="ex-prims">
+    <figcaption><b>Example 4-1.</b> The four primitives, with name tags</figcaption>
+    <script type="model/vrml">
+#VRML V2.0 utf8
+Viewpoint { position 0 0.6 10 description "Line-up" }
+Background { skyColor [ 0.1 0.1 0.12, 0.3 0.3 0.34 ] skyAngle 1.6 }
+
+Transform {
+  translation -3.6 0 0
+  children Shape {
+    appearance Appearance { material Material { diffuseColor 0.85 0.3 0.2 } }
+    geometry Box { size 1.6 1.6 1.6 }
+  }
+}
+Transform {
+  translation -1.2 0 0
+  children Shape {
+    appearance Appearance { material Material { diffuseColor 0.2 0.6 0.85 specularColor 1 1 1 shininess 0.7 } }
+    geometry Sphere { radius 0.95 }
+  }
+}
+Transform {
+  translation 1.2 0 0
+  children Shape {
+    appearance Appearance { material Material { diffuseColor 0.9 0.75 0.2 } }
+    geometry Cone { bottomRadius 0.9 height 1.9 }
+  }
+}
+Transform {
+  translation 3.6 0 0
+  children Shape {
+    appearance Appearance { material Material { diffuseColor 0.35 0.75 0.35 } }
+    geometry Cylinder { radius 0.8 height 1.8 bottom FALSE }
+  }
+}
+
+# Labels. One FontStyle and one Appearance, shared by all four.
+Transform { translation -3.6 -1.7 0 children Shape {
+  appearance DEF Label Appearance { material Material { diffuseColor 0 0 0 emissiveColor 0.9 0.9 0.85 } }
+  geometry Text { string "Box" fontStyle DEF Small FontStyle { justify "MIDDLE" size 0.45 family "TYPEWRITER" } } } }
+Transform { translation -1.2 -1.7 0 children Shape { appearance USE Label geometry Text { string "Sphere" fontStyle USE Small } } }
+Transform { translation 1.2 -1.7 0 children Shape { appearance USE Label geometry Text { string "Cone" fontStyle USE Small } } }
+Transform { translation 3.6 -1.7 0 children Shape { appearance USE Label geometry Text { string "Cylinder" fontStyle USE Small } } }
+</script>
+  </figure>
+
+  <p>The cylinder has its <code>bottom</code> turned off. Orbit underneath it and you can see inside. You can see the inside faces too, as it happens, because this browser lights both sides of an open surface. Many browsers of the time didn't, and you would see straight through the back wall, which made everything look like a stage set.</p>
+
+  <h3>IndexedFaceSet</h3>
+  <p>For everything that isn't a primitive, there is <code>IndexedFaceSet</code>. You give it a list of points in a <code>Coordinate</code> node, then describe each face as a list of indexes into that list, ending each face with <code>-1</code>. Faces should go counterclockwise when you look at the side you want people to see.</p>
+
+  <figure class="example" id="ex-ifs">
+    <figcaption><b>Example 4-2.</b> Three face sets: flat colors, smooth colors, and a concave polygon</figcaption>
+    <script type="model/vrml">
+#VRML V2.0 utf8
+Viewpoint { position 0 1.2 8 orientation 1 0 0 -0.12 }
+
+# A pyramid with one color per face
+Transform {
+  translation -2.6 0 0
+  children Shape {
+    appearance Appearance { material Material { } }
+    geometry IndexedFaceSet {
+      coord Coordinate { point [ 0 1.5 0,  -1 0 -1,  1 0 -1,  1 0 1,  -1 0 1 ] }
+      coordIndex [ 4 3 0 -1,  3 2 0 -1,  2 1 0 -1,  1 4 0 -1,  1 2 3 4 -1 ]
+      color Color { color [ 0.9 0.2 0.2, 0.2 0.8 0.3, 0.2 0.4 0.9, 0.95 0.8 0.1, 0.3 0.3 0.3 ] }
+      colorPerVertex FALSE
+    }
+  }
+}
+
+# An octahedron with one color per corner, smoothly blended
+Transform {
+  translation 0 0.9 0
+  children Shape {
+    appearance Appearance { material Material { specularColor 0.5 0.5 0.5 } }
+    geometry IndexedFaceSet {
+      coord Coordinate { point [ 1 0 0, -1 0 0, 0 1 0, 0 -1 0, 0 0 1, 0 0 -1 ] }
+      coordIndex [ 4 0 2 -1, 0 5 2 -1, 5 1 2 -1, 1 4 2 -1,
+                   0 4 3 -1, 5 0 3 -1, 1 5 3 -1, 4 1 3 -1 ]
+      color Color { color [ 1 0 0, 0 1 1, 1 1 1, 0 0 0, 1 1 0, 0 0 1 ] }
+    }
+  }
+}
+
+# A star, which is not convex, so we have to say so
+Transform {
+  translation 2.6 0.6 0
+  scale 1.6 1.6 1.6
+  children Shape {
+    appearance Appearance { material Material { diffuseColor 0.95 0.75 0.15 } }
+    geometry IndexedFaceSet {
+      coord Coordinate { point [ 0 0.6 0, -0.147 0.202 0, -0.571 0.185 0, -0.238 -0.077 0,
+        -0.353 -0.485 0, 0 -0.25 0, 0.353 -0.485 0, 0.238 -0.077 0, 0.571 0.185 0, 0.147 0.202 0 ] }
+      coordIndex [ 0 1 2 3 4 5 6 7 8 9 -1 ]
+      convex FALSE
+      solid FALSE
+    }
+  }
+}
+</script>
+  </figure>
+
+  <p>Three fields in that listing earn a mention. <code>colorPerVertex FALSE</code> says the <code>Color</code> list has one color per face rather than per point. <code>convex FALSE</code> warns the browser that a polygon has dents, so it must cut it into triangles carefully. (Remove that line and watch the star break. It's educational.) And <code>solid FALSE</code> says the shape has no inside, so both sides should be drawn.</p>
+
+  <p>When you don't supply normals, the browser makes them up. By default every face is flat. The <code>creaseAngle</code> field changes that: where two faces meet at an angle smaller than the crease angle, the browser smooths across the join. Set it to about 0.5 radians for "smooth curves, sharp corners," which is what you wanted anyway.</p>
+
+  <h3>ElevationGrid</h3>
+  <p>Terrain is a grid of heights, and VRML has a node for exactly that. You give it a number of columns and rows, the spacing between them, and a height for every point, row by row.</p>
+
+  <figure class="example" id="ex-terrain">
+    <figcaption><b>Example 4-3.</b> An island, with a shallow sea</figcaption>
+    <script type="model/vrml">
+#VRML V2.0 utf8
+NavigationInfo { type [ "EXAMINE", "ANY" ] }
+Viewpoint { position 0 4.5 9 orientation 1 0 0 -0.5 description "From the boat" }
+Background { skyColor [ 0.3 0.5 0.85, 0.75 0.85 0.95 ] skyAngle 1.5 groundColor 0.1 0.25 0.4 }
+
+Transform {
+  translation -2.75 0 -2.75
+  children Shape {
+    appearance Appearance { material Material { } }
+    geometry ElevationGrid {
+      xDimension 12  zDimension 12
+      xSpacing 0.5   zSpacing 0.5
+      creaseAngle 1.2
+      height [
+      0 0 0.218 0.391 0.409 0.276 0.067 0 0 0 0.108 0.291,
+      0 0 0.21 0.395 0.484 0.466 0.364 0.23 0.13 0.118 0.186 0.274,
+      0 0.027 0.181 0.374 0.587 0.774 0.871 0.827 0.665 0.469 0.315 0.227,
+      0.076 0.078 0.148 0.356 0.722 1.166 1.508 1.576 1.334 0.909 0.479 0.171,
+      0.209 0.123 0.118 0.335 0.836 1.504 2.061 2.229 1.918 1.291 0.62 0.119,
+      0.287 0.15 0.092 0.3 0.85 1.618 2.281 2.503 2.17 1.455 0.668 0.073,
+      0.294 0.164 0.101 0.266 0.746 1.443 2.058 2.275 1.98 1.323 0.594 0.039,
+      0.242 0.199 0.193 0.302 0.606 1.079 1.513 1.666 1.448 0.969 0.438 0.035,
+      0.148 0.251 0.361 0.426 0.517 0.703 0.892 0.941 0.804 0.543 0.273 0.076,
+      0.014 0.241 0.462 0.526 0.475 0.427 0.391 0.332 0.251 0.183 0.155 0.153,
+      0 0.136 0.41 0.514 0.433 0.265 0.081 0 0 0 0.092 0.231,
+      0 0.024 0.298 0.434 0.379 0.182 0 0 0 0 0.064 0.272
+      ]
+      color Color { color [
+        0.76 0.7 0.5, 0.76 0.7 0.5, 0.234 0.527 0.2, 0.222 0.508 0.2, 0.221 0.506 0.2, 0.23 0.52 0.2, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.229 0.519 0.2,
+        0.76 0.7 0.5, 0.76 0.7 0.5, 0.235 0.528 0.2, 0.222 0.508 0.2, 0.215 0.498 0.2, 0.217 0.5 0.2, 0.224 0.511 0.2, 0.234 0.525 0.2, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.23 0.521 0.2,
+        0.76 0.7 0.5, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.223 0.51 0.2, 0.208 0.487 0.2, 0.195 0.467 0.2, 0.188 0.457 0.2, 0.191 0.461 0.2, 0.203 0.479 0.2, 0.216 0.5 0.2, 0.228 0.516 0.2, 0.234 0.526 0.2,
+        0.76 0.7 0.5, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.225 0.512 0.2, 0.198 0.473 0.2, 0.167 0.425 0.2, 0.45 0.38 0.3, 0.45 0.38 0.3, 0.45 0.38 0.3, 0.185 0.453 0.2, 0.216 0.499 0.2, 0.76 0.7 0.5,
+        0.76 0.7 0.5, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.226 0.514 0.2, 0.19 0.46 0.2, 0.45 0.38 0.3, 0.95 0.95 0.97, 0.95 0.95 0.97, 0.45 0.38 0.3, 0.45 0.38 0.3, 0.206 0.484 0.2, 0.76 0.7 0.5,
+        0.23 0.519 0.2, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.229 0.518 0.2, 0.189 0.459 0.2, 0.45 0.38 0.3, 0.95 0.95 0.97, 0.95 0.95 0.97, 0.95 0.95 0.97, 0.45 0.38 0.3, 0.202 0.478 0.2, 0.76 0.7 0.5,
+        0.229 0.519 0.2, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.231 0.522 0.2, 0.197 0.47 0.2, 0.45 0.38 0.3, 0.95 0.95 0.97, 0.95 0.95 0.97, 0.95 0.95 0.97, 0.45 0.38 0.3, 0.208 0.486 0.2, 0.76 0.7 0.5,
+        0.233 0.524 0.2, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.228 0.518 0.2, 0.207 0.485 0.2, 0.173 0.434 0.2, 0.45 0.38 0.3, 0.45 0.38 0.3, 0.45 0.38 0.3, 0.181 0.446 0.2, 0.219 0.503 0.2, 0.76 0.7 0.5,
+        0.76 0.7 0.5, 0.232 0.523 0.2, 0.224 0.511 0.2, 0.22 0.504 0.2, 0.213 0.495 0.2, 0.2 0.475 0.2, 0.186 0.454 0.2, 0.183 0.449 0.2, 0.193 0.464 0.2, 0.211 0.492 0.2, 0.23 0.521 0.2, 0.76 0.7 0.5,
+        0.76 0.7 0.5, 0.233 0.524 0.2, 0.217 0.501 0.2, 0.212 0.494 0.2, 0.216 0.499 0.2, 0.22 0.504 0.2, 0.222 0.508 0.2, 0.226 0.514 0.2, 0.232 0.523 0.2, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.76 0.7 0.5,
+        0.76 0.7 0.5, 0.76 0.7 0.5, 0.221 0.506 0.2, 0.213 0.495 0.2, 0.219 0.504 0.2, 0.231 0.522 0.2, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.233 0.525 0.2,
+        0.76 0.7 0.5, 0.76 0.7 0.5, 0.229 0.518 0.2, 0.219 0.504 0.2, 0.223 0.509 0.2, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.76 0.7 0.5, 0.231 0.521 0.2
+      ] }
+    }
+  }
+}
+
+# The sea: a flat box that is 45 percent see-through
+Transform {
+  translation 0 0.12 0
+  children Shape {
+    appearance Appearance {
+      material Material { diffuseColor 0.15 0.4 0.75 specularColor 0.8 0.8 0.8 shininess 0.6 transparency 0.45 }
+    }
+    geometry Box { size 9 0.02 9 }
+  }
+}
+</script>
+  </figure>
+
+  <p>In 1996, people mostly generated those numbers with a little program, often in Perl, and pasted them in. So did we, although it wasn't Perl. Times change.</p>
+
+  <h3>Extrusion</h3>
+  <p><code>Extrusion</code> is the clever one. It takes a 2D outline (the <code>crossSection</code>) and sweeps it along a 3D path (the <code>spine</code>). At each point of the spine the outline can be scaled and twisted. Tubes, vases, torus rings, springs, picture frames, and anything turned on a lathe all fall out of it.</p>
+
+  <figure class="example" id="ex-extrude">
+    <figcaption><b>Example 4-4.</b> A ring, a vase, and a spring, all from Extrusion</figcaption>
+    <script type="model/vrml">
+#VRML V2.0 utf8
+Viewpoint { position 0 1.2 9 orientation 1 0 0 -0.08 }
+Background { skyColor [ 0.12 0.1 0.08, 0.35 0.3 0.25 ] skyAngle 1.6 }
+
+# A torus: a small circle swept around a big one
+Transform {
+  translation -3 1 0
+  rotation 1 0 0 1.2
+  children Shape {
+    appearance Appearance { material Material { diffuseColor 0.85 0.65 0.2 specularColor 1 0.9 0.6 shininess 0.8 } }
+    geometry Extrusion {
+      crossSection [ 0.3 0, 0.26 0.15, 0.15 0.26, 0 0.3, -0.15 0.26, -0.26 0.15, -0.3 0,
+                     -0.26 -0.15, -0.15 -0.26, 0 -0.3, 0.15 -0.26, 0.26 -0.15, 0.3 0 ]
+      spine [ 1.2 0 0, 1.159 0 0.311, 1.039 0 0.6, 0.849 0 0.849, 0.6 0 1.039, 0.311 0 1.159,
+              0 0 1.2, -0.311 0 1.159, -0.6 0 1.039, -0.849 0 0.849, -1.039 0 0.6, -1.159 0 0.311,
+              -1.2 0 0, -1.159 0 -0.311, -1.039 0 -0.6, -0.849 0 -0.849, -0.6 0 -1.039, -0.311 0 -1.159,
+              0 0 -1.2, 0.311 0 -1.159, 0.6 0 -1.039, 0.849 0 -0.849, 1.039 0 -0.6, 1.159 0 -0.311, 1.2 0 0 ]
+      creaseAngle 1.6
+      beginCap FALSE endCap FALSE
+    }
+  }
+}
+
+# A vase: a circle swept up a straight line, scaled along the way
+Transform {
+  translation 0 -0.4 0
+  children Shape {
+    appearance Appearance { material Material { diffuseColor 0.2 0.45 0.65 specularColor 0.7 0.7 0.7 shininess 0.5 } }
+    geometry Extrusion {
+      crossSection [ 0.3 0, 0.26 0.15, 0.15 0.26, 0 0.3, -0.15 0.26, -0.26 0.15, -0.3 0,
+                     -0.26 -0.15, -0.15 -0.26, 0 -0.3, 0.15 -0.26, 0.26 -0.15, 0.3 0 ]
+      spine [ 0 0 0, 0 0.3 0, 0 0.8 0, 0 1.4 0, 0 1.9 0, 0 2.3 0, 0 2.6 0 ]
+      scale [ 1.2 1.2, 2.4 2.4, 3 3, 2.2 2.2, 1.1 1.1, 1.2 1.2, 1.8 1.8 ]
+      creaseAngle 1.6
+      endCap FALSE
+      solid FALSE
+    }
+  }
+}
+
+# A spring: a small circle swept along a helix
+Transform {
+  translation 3 -0.3 0
+  children Shape {
+    appearance Appearance { material Material { diffuseColor 0.7 0.7 0.75 specularColor 1 1 1 shininess 0.9 } }
+    geometry Extrusion {
+      crossSection [ 0.1 0, 0.07 0.07, 0 0.1, -0.07 0.07, -0.1 0, -0.07 -0.07, 0 -0.1, 0.07 -0.07, 0.1 0 ]
+      spine [ 0.8 0 0, 0.751 0.07 -0.274, 0.612 0.14 -0.515, 0.398 0.21 -0.694, 0.136 0.28 -0.788,
+        -0.143 0.35 -0.787, -0.404 0.42 -0.691, -0.616 0.49 -0.51, -0.754 0.56 -0.268, -0.8 0.63 0.007,
+        -0.749 0.7 0.281, -0.608 0.77 0.521, -0.392 0.84 0.697, -0.129 0.91 0.789, 0.149 0.98 0.786,
+        0.41 1.05 0.687, 0.62 1.12 0.505, 0.756 1.19 0.262, 0.8 1.26 -0.013, 0.747 1.33 -0.287,
+        0.603 1.4 -0.526, 0.386 1.47 -0.701, 0.123 1.54 -0.791, -0.156 1.61 -0.785, -0.415 1.68 -0.684,
+        -0.625 1.75 -0.5, -0.758 1.82 -0.255, -0.8 1.89 0.02, -0.744 1.96 0.293, -0.599 2.03 0.531,
+        -0.38 2.1 0.704, -0.116 2.17 0.792, 0.162 2.24 0.783, 0.421 2.31 0.68, 0.629 2.38 0.495,
+        0.76 2.45 0.249, 0.8 2.52 -0.027 ]
+      creaseAngle 1.6
+    }
+  }
+}
+</script>
+  </figure>
+
+  <div class="note" data-icon="warn"><p>The spec has a precise recipe for how the cross section is oriented at each spine point, and it involves cross products of neighboring spine segments. When the spine is perfectly straight those cross products are zero and the recipe has to fall back on something else. Browsers of the era did not all agree on what. If your extrusion comes out twisted, add a tiny wiggle to the spine and see if it stops.</p></div>
+
+  <h3>Lines, Points, and Words</h3>
+  <p>That leaves three more. <code>IndexedLineSet</code> is like a face set but draws lines instead of filling faces; lines are never lit, so they take their color from a <code>Color</code> node or from the material's <code>emissiveColor</code>. <code>PointSet</code> draws dots. <code>Text</code>, which you have already used, draws flat text in the XY plane, with a <code>FontStyle</code> choosing among <code>"SERIF"</code>, <code>"SANS"</code>, and <code>"TYPEWRITER"</code>. Those are the only three fonts. Choose wisely.</p>
+</section>
+
+<!-- =============================== CHAPTER 5 =============================== -->
+<section class="page" id="ch5">
+  <div class="runhead"><span>Chapter 5: Appearance, Light, and Weather</span><span class="folio"></span></div>
+  <div class="ch-open">
+    <div class="ch-label">Chapter <span class="n">5</span></div>
+    <h2>Appearance, Light, and Weather</h2>
+  </div>
+
+  <p class="dropcap">A <code>Material</code> has six fields, and between them they describe how a surface responds to light. <code>diffuseColor</code> is the color you think of as "the color." <code>specularColor</code> and <code>shininess</code> control highlights. <code>emissiveColor</code> is light the surface gives off on its own. <code>ambientIntensity</code> says how much of the scene's ambient light the surface picks up. <code>transparency</code> goes from 0, solid, to 1, gone.</p>
+
+  <figure class="example" id="ex-materials">
+    <figcaption><b>Example 5-1.</b> Five materials and three lights</figcaption>
+    <script type="model/vrml">
+#VRML V2.0 utf8
+NavigationInfo { headlight FALSE type [ "EXAMINE", "ANY" ] }
+Viewpoint { position 0 2 9.5 orientation 1 0 0 -0.15 }
+Background { skyColor 0.03 0.03 0.05 }
+
+DirectionalLight { direction -0.3 -0.6 -1 intensity 0.35 ambientIntensity 0.3 }
+PointLight { location -2 3 3 color 1 0.95 0.85 intensity 0.9 }
+SpotLight {
+  location 0 6 2  direction 0 -1 -0.3
+  cutOffAngle 0.5  beamWidth 0.3
+  color 0.6 0.75 1  intensity 1
+}
+
+# A floor, so the spotlight has something to fall on
+Transform { translation 0 -0.01 0 children Shape {
+  appearance Appearance { material Material { diffuseColor 0.5 0.5 0.5 } }
+  geometry IndexedFaceSet {
+    coord Coordinate { point [ -6 0 -4, -6 0 4, 6 0 4, 6 0 -4 ] }
+    coordIndex [ 0 1 2 3 -1 ] } } }
+
+Transform { translation -4 0.7 0 children Shape {
+  appearance Appearance { material Material { diffuseColor 0.8 0.1 0.1 specularColor 0.6 0.6 0.6 shininess 0.25 } }
+  geometry Sphere { radius 0.7 } } }
+Transform { translation -2 0.7 0 children Shape {
+  appearance Appearance { material Material { diffuseColor 0.45 0.33 0.08 specularColor 1 0.85 0.4 shininess 0.85 ambientIntensity 0.4 } }
+  geometry Sphere { radius 0.7 } } }
+Transform { translation 0 0.7 0 children Shape {
+  appearance Appearance { material Material { diffuseColor 0.92 0.92 0.88 } }
+  geometry Sphere { radius 0.7 } } }
+Transform { translation 2 0.7 0 children Shape {
+  appearance Appearance { material Material { diffuseColor 0 0 0 emissiveColor 0.3 0.95 0.45 } }
+  geometry Sphere { radius 0.7 } } }
+Transform { translation 4 0.7 0 children Shape {
+  appearance Appearance { material Material { diffuseColor 0.6 0.8 1 specularColor 1 1 1 shininess 0.9 transparency 0.65 } }
+  geometry Sphere { radius 0.7 } } }
+
+Transform { translation 0 1.9 0 children Shape {
+  appearance Appearance { material Material { diffuseColor 0 0 0 emissiveColor 0.8 0.8 0.75 } }
+  geometry Text {
+    string "plastic     brass      chalk      glow       glass"
+    fontStyle FontStyle { family "TYPEWRITER" justify "MIDDLE" size 0.42 } } } }
+</script>
+  </figure>
+
+  <p>The <code>NavigationInfo</code> node at the top turns off the <span class="term">headlight</span>, a light every browser straps to your forehead by default so you can see where you are going. Turning it off lets the scene's own lights do the work. Use the Headlight button in the control bar to switch yours back on and see how flat everything becomes.</p>
+
+  <p>The three light types behave as you would guess, with one surprise. <code>PointLight</code> and <code>SpotLight</code> light everything within their <code>radius</code>, anywhere in the world. A <code>DirectionalLight</code>, though, only lights the other children of the group it is in. Put one inside a <code>Transform</code> and it lights that transform's contents and nothing else. This is useful, and nobody expects it.</p>
+
+  <h3>Textures</h3>
+  <p>A texture is an image wrapped onto a shape. <code>ImageTexture</code> loads a JPEG or PNG (or, in the old days, a GIF) from a URL. <code>PixelTexture</code> lets you type the pixels directly into the file, as hexadecimal numbers, which is exactly as fun as it sounds. <code>TextureTransform</code> scales, rotates, and slides a texture across the surface.</p>
+
+  <figure class="example" id="ex-textures">
+    <figcaption><b>Example 5-2.</b> Typed pixels, a repeating check, and some bricks</figcaption>
+    <script type="model/vrml">
+#VRML V2.0 utf8
+Viewpoint { position 0 0.5 8 }
+Background { skyColor [ 0.55 0.6 0.7, 0.9 0.9 0.92 ] skyAngle 1.5 }
+
+# 8 x 8 pixels, 3 components (RGB), listed from the BOTTOM row up
+Transform {
+  translation -2.6 0.4 0
+  rotation 0 1 0 0.35
+  children Shape {
+    appearance Appearance {
+      texture PixelTexture {
+        image 8 8 3
+          0x203060 0x203060 0xFFD020 0xFFD020 0xFFD020 0xFFD020 0x203060 0x203060
+          0x203060 0xFFD020 0x000000 0x000000 0x000000 0x000000 0xFFD020 0x203060
+          0xFFD020 0x000000 0xFFD020 0xFFD020 0xFFD020 0xFFD020 0x000000 0xFFD020
+          0xFFD020 0xFFD020 0xFFD020 0xFFD020 0xFFD020 0xFFD020 0xFFD020 0xFFD020
+          0xFFD020 0xFFD020 0x000000 0xFFD020 0xFFD020 0x000000 0xFFD020 0xFFD020
+          0xFFD020 0xFFD020 0x000000 0xFFD020 0xFFD020 0x000000 0xFFD020 0xFFD020
+          0x203060 0xFFD020 0xFFD020 0xFFD020 0xFFD020 0xFFD020 0xFFD020 0x203060
+          0x203060 0x203060 0xFFD020 0xFFD020 0xFFD020 0xFFD020 0x203060 0x203060
+      }
+    }
+    geometry Box { size 1.8 1.8 1.8 }
+  }
+}
+
+# A 2 x 2 one-component (grayscale) image, repeated and rotated
+Transform {
+  translation 0 0.4 0
+  children Shape {
+    appearance Appearance {
+      material Material { diffuseColor 0.9 0.3 0.25 }
+      texture PixelTexture { image 2 2 1  0xFF 0x55 0x55 0xFF }
+      textureTransform TextureTransform { scale 6 3 rotation 0.3 }
+    }
+    geometry Cylinder { radius 0.9 height 1.8 }
+  }
+}
+
+# A real image file, repeated twice in each direction
+Transform {
+  translation 2.6 0.4 0
+  rotation 0 1 0 -0.35
+  children Shape {
+    appearance Appearance {
+      material Material { }
+      texture ImageTexture { url "worlds/brick.png" }
+      textureTransform TextureTransform { scale 2 2 }
+    }
+    geometry Box { size 1.8 1.8 1.8 }
+  }
+}
+</script>
+  </figure>
+
+  <p>Look closely at the middle cylinder. Its texture is grayscale, and a grayscale texture <em>multiplies</em> the material's diffuse color instead of replacing it, so the gray checks come out red. Full-color textures replace the diffuse color entirely. The spec defines this per number of image components, and it is one of those rules that seems arbitrary until the day it saves you from making a second texture file.</p>
+
+  <div class="note" data-icon="warn"><p>The pixels of an <code>SFImage</code> start at the <em>bottom</em> left and go up, row by row. Every image editor you have ever used starts at the top. The smiley in the listing above is drawn upside down so that it appears right side up, and if that sentence makes your head hurt, welcome to texture coordinates.</p></div>
+
+  <h3>Sky and Fog</h3>
+  <p><code>Background</code> paints the sky as bands of color at angles measured from straight up, and the ground as bands measured from straight down. <code>Fog</code> blends distant things into a color, with <code>visibilityRange</code> giving the distance at which they vanish entirely. In 1997 fog was a performance trick: if nobody can see past thirty meters, nobody notices you didn't build anything past thirty meters. It also looks rather lovely.</p>
+
+  <figure class="example" id="ex-fog">
+    <figcaption><b>Example 5-3.</b> A walk in the foggy woods</figcaption>
+    <script type="model/vrml">
+#VRML V2.0 utf8
+NavigationInfo { type [ "WALK", "ANY" ] speed 2 }
+Viewpoint { position 0 1.6 12 description "Trailhead" }
+Background {
+  skyColor    [ 0.62 0.66 0.7, 0.78 0.8 0.82 ]
+  skyAngle    [ 1.4 ]
+  groundColor [ 0.78 0.8 0.82 ]
+}
+Fog { color 0.78 0.8 0.82 fogType "LINEAR" visibilityRange 28 }
+DirectionalLight { direction 0.2 -1 -0.3 intensity 0.7 }
+
+# The ground
+Shape {
+  appearance Appearance { material Material { diffuseColor 0.3 0.36 0.22 } }
+  geometry IndexedFaceSet {
+    coord Coordinate { point [ -40 0 -40, -40 0 40, 40 0 40, 40 0 -40 ] }
+    coordIndex [ 0 1 2 3 -1 ]
+  }
+}
+
+# One tree, defined once
+DEF Tree Group {
+  children [
+    Transform { translation 0 0.6 0 children Shape {
+      appearance Appearance { material Material { diffuseColor 0.35 0.22 0.12 } }
+      geometry Cylinder { radius 0.15 height 1.2 } } }
+    Transform { translation 0 2.2 0 children Shape {
+      appearance Appearance { material Material { diffuseColor 0.12 0.32 0.16 } }
+      geometry Cone { bottomRadius 1 height 2.6 } } }
+  ]
+}
+# ...and planted many times
+Transform { translation -3 0 6 children USE Tree }
+Transform { translation 2.5 0 4 children USE Tree }
+Transform { translation -5 0 1 children USE Tree }
+Transform { translation 4 0 -1 scale 1.2 1.3 1.2 children USE Tree }
+Transform { translation -1.5 0 -3 children USE Tree }
+Transform { translation 1 0 -7 scale 0.9 1.2 0.9 children USE Tree }
+Transform { translation -6 0 -6 children USE Tree }
+Transform { translation 6 0 -8 scale 1.3 1.5 1.3 children USE Tree }
+Transform { translation -3 0 -11 children USE Tree }
+Transform { translation 3 0 -14 children USE Tree }
+Transform { translation -7 0 -15 scale 1.2 1.4 1.2 children USE Tree }
+Transform { translation 0 0 -18 children USE Tree }
+Transform { translation 7 0 -20 children USE Tree }
+Transform { translation -4 0 -22 children USE Tree }
+Transform { translation 2 0 -26 scale 1.4 1.6 1.4 children USE Tree }
+Transform { translation 8 0 3 children USE Tree }
+Transform { translation -9 0 -2 children USE Tree }
+Transform { translation 10 0 -12 children USE Tree }
+Transform { translation -10 0 -10 children USE Tree }
+</script>
+  </figure>
+
+  <p>That world starts in Walk mode, because the <code>NavigationInfo</code> says so. Click in the view and use the arrow keys. Hold Shift to hurry.</p>
+</section>
+
+<!-- =============================== CHAPTER 6 =============================== -->
+<section class="page" id="ch6">
+  <div class="runhead"><span>Chapter 6: Things That Move</span><span class="folio"></span></div>
+  <div class="ch-open">
+    <div class="ch-label">Chapter <span class="n">6</span></div>
+    <h2>Things That Move</h2>
+    <p class="epigraph">VRML 1.0 gave us a place. VRML 2.0 gave us a clock.</p>
+  </div>
+  <div class="in-this">
+    <h4>In this chapter</h4>
+    <ul><li>Events and routes</li><li>TimeSensor</li><li>Interpolators</li><li>Touching things</li><li>Dragging things</li></ul>
+  </div>
+
+  <p class="dropcap">Animation in VRML 2.0 is plumbing. Some nodes produce <span class="term">events</span>, which are values stamped with a time. A <code>ROUTE</code> statement connects one node's eventOut to another node's eventIn, and from then on, every event that comes out of the first goes into the second. You build behavior by connecting pipes.</p>
+  <pre class="listing"><span class="ln">ROUTE <i>FromNode</i>.<i>eventOut</i> TO <i>ToNode</i>.<i>eventIn</i></span></pre>
+  <p>Both nodes must have names, given with <code>DEF</code>, and the two fields must have the same type. That's the only rule. A route from an <code>SFFloat</code> to an <code>SFFloat</code> is fine. A route from an <code>SFFloat</code> to an <code>SFColor</code> is a load error, and this browser will tell you which line it's on.</p>
+
+  <h3>The Clock and the Translator</h3>
+  <p>Nearly every animation is built from two parts. A <code>TimeSensor</code> is a clock. While it runs, it sends out a <code>fraction_changed</code> event that climbs from 0 to 1 over each <code>cycleInterval</code> seconds, then starts again if <code>loop</code> is TRUE. An <span class="term">interpolator</span> takes that fraction and turns it into something useful: a position, a rotation, a color, a number. You give the interpolator a list of <code>key</code> fractions and a matching list of <code>keyValue</code> values, and it blends between them.</p>
+
+  <figure class="example" id="ex-toys">
+    <figcaption><b>Example 6-1.</b> A toy box: one clock, four interpolators</figcaption>
+    <script type="model/vrml">
+#VRML V2.0 utf8
+Viewpoint { position 0 1.5 9 orientation 1 0 0 -0.08 }
+Background { skyColor [ 0.95 0.9 0.8, 0.7 0.6 0.5 ] skyAngle 1.6 }
+
+Transform { translation 0 -0.05 0 children Shape {
+  appearance Appearance { material Material { diffuseColor 0.55 0.4 0.28 } }
+  geometry Box { size 10 0.1 4 } } }
+
+# A spinning top
+DEF Top Transform {
+  translation -3 0.7 0
+  children [
+    Transform { rotation 1 0 0 3.1416 children Shape {
+      appearance Appearance { material Material { diffuseColor 0.85 0.15 0.15 specularColor 0.6 0.6 0.6 } }
+      geometry Cone { bottomRadius 0.6 height 1.4 } } }
+    Transform { translation 0 0.85 0 children Shape {
+      appearance Appearance { material Material { diffuseColor 0.15 0.15 0.15 } }
+      geometry Cylinder { radius 0.06 height 0.4 } } }
+  ]
+}
+# A bouncing ball
+DEF Ball Transform {
+  translation -1 0.4 0
+  children Shape {
+    appearance Appearance { material Material { diffuseColor 0.2 0.5 0.95 specularColor 1 1 1 shininess 0.6 } }
+    geometry Sphere { radius 0.4 }
+  }
+}
+# A block that changes color
+Transform {
+  translation 1 0.6 0
+  children Shape {
+    appearance Appearance { material DEF BlockPaint Material { diffuseColor 1 0 0 } }
+    geometry Box { size 1.2 1.2 1.2 }
+  }
+}
+# A ghost that fades in and out
+Transform {
+  translation 3 0.8 0
+  children Shape {
+    appearance Appearance { material DEF Ghost Material { diffuseColor 0.95 0.95 1 emissiveColor 0.3 0.3 0.35 } }
+    geometry Sphere { radius 0.7 }
+  }
+}
+
+DEF Clock TimeSensor { cycleInterval 3 loop TRUE }
+
+DEF Spin OrientationInterpolator {
+  key      [ 0, 0.33, 0.66, 1 ]
+  keyValue [ 0 1 0 0, 0 1 0 2.094, 0 1 0 4.189, 0 1 0 6.283 ]
+}
+DEF Bounce PositionInterpolator {
+  key      [ 0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 ]
+  keyValue [ -1 0.4 0, -1 1.3 0, -1 2.0 0, -1 2.5 0, -1 2.8 0, -1 2.9 0,
+             -1 2.8 0, -1 2.5 0, -1 2.0 0, -1 1.3 0, -1 0.4 0 ]
+}
+DEF Rainbow ColorInterpolator {
+  key      [ 0, 0.33, 0.66, 1 ]
+  keyValue [ 1 0 0, 0 1 0, 0 0 1, 1 0 0 ]
+}
+DEF Fade ScalarInterpolator {
+  key      [ 0, 0.5, 1 ]
+  keyValue [ 0, 0.9, 0 ]
+}
+
+ROUTE Clock.fraction_changed TO Spin.set_fraction
+ROUTE Clock.fraction_changed TO Bounce.set_fraction
+ROUTE Clock.fraction_changed TO Rainbow.set_fraction
+ROUTE Clock.fraction_changed TO Fade.set_fraction
+
+ROUTE Spin.value_changed    TO Top.set_rotation
+ROUTE Bounce.value_changed  TO Ball.set_translation
+ROUTE Rainbow.value_changed TO BlockPaint.set_diffuseColor
+ROUTE Fade.value_changed    TO Ghost.set_transparency
+</script>
+  </figure>
+
+  <p>Notice that the spin uses four keys to get one full turn instead of two. An <code>OrientationInterpolator</code> always takes the shortest way between two rotations, and the shortest way from 0 to 6.283 radians is to not move at all. Spread the turn over several keys, each less than half a revolution apart, and it behaves.</p>
+
+  <div class="sidebar">
+    <div class="sb-title">Event Cascades and Loops</div>
+    <p>When an event arrives at a node, it can cause more events, which go down more routes, and so on. All of these happen at the same timestamp, and together they are called an <span class="term">event cascade</span>. It is entirely possible to route things in a circle. The spec handles this with a simple rule: within one timestamp, each route carries at most one event. The circle runs once and stops. This browser follows the rule, so wire things up however you like. You cannot hurt it. Probably.</p>
+  </div>
+
+  <h3>Touching Things</h3>
+  <p>A <span class="term">sensor</span> watches for something and reports it as events. Pointing device sensors watch your mouse, and they work on all the geometry that shares their parent group. Put a <code>TouchSensor</code> next to a shape in a <code>Group</code>, and clicking the shape fires the sensor. The <code>touchTime</code> event it sends is an <code>SFTime</code>, and a TimeSensor's <code>startTime</code> is also an <code>SFTime</code>. Connect them and you have a button.</p>
+
+  <figure class="example" id="ex-door">
+    <figcaption><b>Example 6-2.</b> A door with a doorbell</figcaption>
+    <script type="model/vrml">
+#VRML V2.0 utf8
+Viewpoint { position 1 1.4 6 orientation 0 1 0 0.15 description "On the doorstep" }
+Background { skyColor [ 0.25 0.3 0.5, 0.8 0.6 0.5 ] skyAngle 1.6 }
+
+# The wall, with a gap for the door
+Transform { translation -2.5 1.25 0 children DEF Brick Shape {
+  appearance Appearance { material Material { diffuseColor 0.6 0.3 0.22 } }
+  geometry Box { size 4 2.5 0.3 } } }
+Transform { translation 2.5 1.25 0 children USE Brick }
+
+# The door hangs on a hinge at x = -0.5. Rotating the hinge swings the door.
+DEF Hinge Transform {
+  translation -0.5 0 0
+  children Transform {
+    translation 0.5 1.1 0
+    children Shape {
+      appearance Appearance { material Material { diffuseColor 0.25 0.4 0.2 } }
+      geometry Box { size 1 2.2 0.1 }
+    }
+  }
+}
+
+# Behind the door, the reward
+Transform { translation 0 1.2 -1.5 children Shape {
+  appearance Appearance { material Material { diffuseColor 0 0 0 emissiveColor 1 0.9 0.5 } }
+  geometry Text {
+    string [ "Nothing in here.", "It was always", "about the door." ]
+    fontStyle FontStyle { justify "MIDDLE" size 0.25 family "SANS" }
+  } } }
+
+# The doorbell: a TouchSensor and a button in the same Group
+Group {
+  children [
+    DEF Bell TouchSensor { }
+    Transform {
+      translation 0.9 1.2 0.2
+      rotation 1 0 0 1.5708
+      children Shape {
+        appearance Appearance { material Material { diffuseColor 0.9 0.1 0.1 emissiveColor 0.3 0 0 } }
+        geometry Cylinder { radius 0.12 height 0.1 }
+      }
+    }
+  ]
+}
+
+DEF Timer TimeSensor { cycleInterval 4 }
+DEF Swing OrientationInterpolator {
+  key      [ 0, 0.25, 0.75, 1 ]
+  keyValue [ 0 1 0 0, 0 1 0 1.5, 0 1 0 1.5, 0 1 0 0 ]
+}
+ROUTE Bell.touchTime        TO Timer.set_startTime
+ROUTE Timer.fraction_changed TO Swing.set_fraction
+ROUTE Swing.value_changed    TO Hinge.set_rotation
+</script>
+  </figure>
+
+  <p>The cursor changes to a pointing hand over the red button. That's the browser telling you there is a sensor there. Press the button while the door is still moving and nothing happens, because a running TimeSensor ignores new start times. This is in the spec, and it is the reason every VRML author has at some point clicked a button nine times in a row while muttering.</p>
+
+  <h3>Dragging Things</h3>
+  <p>Three more sensors turn mouse drags into motion. <code>PlaneSensor</code> slides things on a flat plane. <code>SphereSensor</code> spins things like a trackball. <code>CylinderSensor</code> turns things around a vertical axis, like a knob. Each sends its result as a value you can route straight into a <code>Transform</code>.</p>
+
+  <figure class="example" id="ex-drag">
+    <figcaption><b>Example 6-3.</b> A slider, a trackball, and a dial</figcaption>
+    <script type="model/vrml">
+#VRML V2.0 utf8
+NavigationInfo { type [ "EXAMINE", "ANY" ] }
+Viewpoint { position 0 1.2 8 orientation 1 0 0 -0.1 }
+Background { skyColor 0.15 0.17 0.2 }
+
+# A track for the slider
+Transform { translation 0 -1.3 0 children Shape {
+  appearance Appearance { material Material { diffuseColor 0.4 0.4 0.42 } }
+  geometry Box { size 4.6 0.08 0.2 } } }
+
+# The slider: the sensor and the knob share a Group
+Transform {
+  translation 0 -1.3 0
+  children [
+    DEF Slide PlaneSensor { minPosition -2 0 maxPosition 2 0 }
+    DEF Knob Transform { children Shape {
+      appearance Appearance { material Material { diffuseColor 0.95 0.65 0.1 } }
+      geometry Box { size 0.35 0.5 0.35 } } }
+  ]
+}
+ROUTE Slide.translation_changed TO Knob.set_translation
+
+# The trackball: drag the cube to spin it
+Transform {
+  translation -1.8 0.8 0
+  children [
+    DEF Ball SphereSensor { }
+    DEF Cube Transform { children Shape {
+      appearance Appearance {
+        material Material { }
+        texture PixelTexture { image 4 4 3
+          0xC03020 0xF0F0E0 0xC03020 0xF0F0E0
+          0xF0F0E0 0xC03020 0xF0F0E0 0xC03020
+          0xC03020 0xF0F0E0 0xC03020 0xF0F0E0
+          0xF0F0E0 0xC03020 0xF0F0E0 0xC03020 }
+      }
+      geometry Box { size 1.4 1.4 1.4 } } }
+  ]
+}
+ROUTE Ball.rotation_changed TO Cube.set_rotation
+
+# The dial: turns around Y only, and stops at the ends
+Transform {
+  translation 1.8 0.6 0
+  children [
+    DEF Turn CylinderSensor { minAngle -2.5 maxAngle 2.5 }
+    DEF Dial Transform { children [
+      Shape {
+        appearance Appearance { material Material { diffuseColor 0.25 0.3 0.55 specularColor 0.8 0.8 0.8 } }
+        geometry Cylinder { radius 0.8 height 0.4 }
+      }
+      Transform { translation 0 0.25 0.55 children Shape {
+        appearance Appearance { material Material { diffuseColor 1 1 1 emissiveColor 0.5 0.5 0.5 } }
+        geometry Box { size 0.12 0.12 0.4 } } }
+    ] }
+  ]
+}
+ROUTE Turn.rotation_changed TO Dial.set_rotation
+</script>
+  </figure>
+
+  <div class="note" data-icon="tip"><p>A classic mistake is to put the sensor <em>inside</em> the Transform it moves. Then the sensor's own coordinate system moves as you drag, and the object runs away from the mouse like a cat. Keep the sensor one level up, as a sibling of the thing it moves.</p></div>
+</section>
+
+<!-- =============================== CHAPTER 7 =============================== -->
+<section class="page" id="ch7">
+  <div class="runhead"><span>Chapter 7: Being Somewhere</span><span class="folio"></span></div>
+  <div class="ch-open">
+    <div class="ch-label">Chapter <span class="n">7</span></div>
+    <h2>Being Somewhere</h2>
+    <p class="epigraph">A world is not a model you look at. It's a place you visit. The difference is mostly viewpoints.</p>
+  </div>
+
+  <p class="dropcap">A few nodes don't draw anything at all; they describe how a visitor experiences the world. <code>Viewpoint</code> marks a spot to stand, with a name for the menu. <code>NavigationInfo</code> says whether to walk, fly, or examine, how fast, and whether to turn on the headlight. <code>Background</code> and <code>Fog</code> you have met. These four are <span class="term">bindable</span> nodes: there can be many in a world, but only one of each kind is active at a time, and sending <code>TRUE</code> to its <code>set_bind</code> eventIn makes it the active one.</p>
+
+  <p><code>Anchor</code> is the Web part of the World Wide Web. It's a group whose children are a hyperlink. Clicking them follows the <code>url</code>, which can point to another world, to an HTML page, or (with a <code>#</code> in front) to a named <code>Viewpoint</code> in the current world. <code>ProximitySensor</code> watches an invisible box and reports when you walk into it, where you are, and which way you are facing.</p>
+
+  <figure class="example" id="ex-garden">
+    <figcaption><b>Example 7-1.</b> A garden with a lamp that notices you</figcaption>
+    <script type="model/vrml">
+#VRML V2.0 utf8
+WorldInfo { title "The Garden" }
+NavigationInfo { type [ "WALK", "ANY" ] headlight FALSE speed 2 }
+DEF Gate Viewpoint { position 0 1.6 14 description "The gate" }
+DEF Top  Viewpoint { position 0 14 0.1 orientation 1 0 0 -1.5608 description "Up in the air" }
+DEF Bench Viewpoint { position 4 1.2 -1 orientation 0 1 0 0.9 description "By the lamp" }
+Background { skyColor [ 0.02 0.02 0.08, 0.12 0.1 0.3, 0.45 0.25 0.3 ] skyAngle [ 1.1, 1.57 ] }
+DirectionalLight { direction 0.2 -1 -0.3 intensity 0.25 ambientIntensity 0.4 color 0.6 0.65 1 }
+
+# Grass
+Shape {
+  appearance Appearance { material Material { diffuseColor 0.18 0.32 0.15 } }
+  geometry IndexedFaceSet {
+    coord Coordinate { point [ -20 0 -20, -20 0 20, 20 0 20, 20 0 -20 ] }
+    coordIndex [ 0 1 2 3 -1 ] }
+}
+# A path of flat stones
+DEF Stone Shape {
+  appearance Appearance { material Material { diffuseColor 0.55 0.52 0.48 } }
+  geometry Cylinder { radius 0.45 height 0.06 }
+}
+Transform { translation 0 0 11 children USE Stone }
+Transform { translation 0.3 0 9.5 children USE Stone }
+Transform { translation -0.1 0 8 children USE Stone }
+Transform { translation 0.4 0 6.5 children USE Stone }
+Transform { translation 0.9 0 5 children USE Stone }
+Transform { translation 1.6 0 3.6 children USE Stone }
+Transform { translation 2.5 0 2.4 children USE Stone }
+
+# The lamp, its light, and the sensor that switches it
+Transform {
+  translation 4 0 0
+  children [
+    Transform { translation 0 1.2 0 children Shape {
+      appearance Appearance { material Material { diffuseColor 0.1 0.1 0.1 } }
+      geometry Cylinder { radius 0.06 height 2.4 } } }
+    Transform { translation 0 2.5 0 children Shape {
+      appearance Appearance { material DEF Bulb Material { diffuseColor 0.2 0.2 0.2 } }
+      geometry Sphere { radius 0.22 } } }
+    DEF Glow PointLight { location 0 2.5 0 on FALSE color 1 0.85 0.5 intensity 1.2 radius 12 attenuation 0 0.25 0 }
+    DEF Near ProximitySensor { size 9 6 9 center 0 2 0 }
+  ]
+}
+ROUTE Near.isActive TO Glow.set_on
+
+# A sign that turns to face you and links to the sky
+Transform {
+  translation -2 1.4 4
+  children Billboard {
+    children Anchor {
+      url "#Top"
+      description "Fly up for a look around"
+      children [
+        Shape {
+          appearance Appearance { material Material { diffuseColor 0.3 0.2 0.1 } }
+          geometry Box { size 2.2 0.7 0.05 }
+        }
+        Transform { translation 0 -0.08 0.04 children Shape {
+          appearance Appearance { material Material { diffuseColor 0 0 0 emissiveColor 1 0.95 0.8 } }
+          geometry Text { string "LOOK UP" fontStyle FontStyle { justify "MIDDLE" size 0.42 family "SANS" style "BOLD" } } } }
+      ]
+    }
+  }
+}
+</script>
+  </figure>
+
+  <p>Walk up the path toward the lamp. When you step inside the sensor's box, its <code>isActive</code> event goes TRUE, and that is routed straight into the light's <code>on</code> field. Walk away and it goes out. No scripting, just one route. The sign is an <code>Anchor</code> inside a <code>Billboard</code>, so it always faces you; hover over it and the status bar shows its description, and clicking it takes you up in the air. The viewpoint menu in the control bar lists the other places to stand, and the browser glides between them, which is a courtesy Cosmo Player taught us all to expect.</p>
+
+  <div class="note" data-icon="note"><p>A <code>ProximitySensor</code> with a size of zero, the default, is disabled. Its box has to have some volume to notice anyone. If your sensor never fires, check the <code>size</code> first.</p></div>
+</section>
+
+<!-- =============================== CHAPTER 8 =============================== -->
+<section class="page" id="ch8">
+  <div class="runhead"><span>Chapter 8: Scripting</span><span class="folio"></span></div>
+  <div class="ch-open">
+    <div class="ch-label">Chapter <span class="n">8</span></div>
+    <h2>Scripting</h2>
+    <p class="epigraph">Routes can take you a long way. Then one day you need an "if."</p>
+  </div>
+  <div class="in-this">
+    <h4>In this chapter</h4>
+    <ul><li>The Script node</li><li>VRMLScript and JavaScript</li><li>The Browser object</li><li>Building worlds from code</li></ul>
+  </div>
+
+  <p class="dropcap">The <code>Script</code> node is a node whose behavior you write yourself. You declare its interface in the file, the same way the spec declares the fields of built-in nodes: a list of <code>eventIn</code>, <code>eventOut</code>, and <code>field</code> declarations. Then you give it a program in the <code>url</code> field. When an event arrives at one of its eventIns, the browser calls the function with the same name.</p>
+
+  <h3>Which Language?</h3>
+  <p>The VRML97 spec defines two scripting languages in its annexes: Java and ECMAScript, the standardized name for JavaScript. In practice there was a third. SGI's Cosmo Player supported <em>VRMLScript</em>, a cut-down JavaScript dialect designed to be small enough to embed in a plug-in. You told the browser which one you meant with a prefix on the source code:</p>
+  <pre class="listing"><span class="ln">url "javascript: function touched(value, time) { ... }"</span><span class="ln">url "vrmlscript: function touched(value, time) { ... }"</span></pre>
+  <p>This browser accepts both prefixes, plus <code>ecmascript:</code>, and runs them all as ordinary JavaScript. It does not run Java. If you point a <code>Script</code> at a <code>.class</code> file it will politely decline, which is probably for the best for everyone.</p>
+
+  <h3>The Rules</h3>
+  <ul>
+    <li>Each <code>eventIn</code> calls a function of the same name, with two arguments: the value, and the timestamp in seconds.</li>
+    <li>Every <code>field</code> and <code>eventOut</code> is a variable your code can read. Assigning to an <code>eventOut</code> sends an event. (Changing part of one, as in <code>position_changed.x = 2</code>, also counts.)</li>
+    <li>If you define <code>initialize()</code>, it runs once when the world loads. <code>shutdown()</code> runs when the world goes away. <code>eventsProcessed()</code> runs after a batch of events has been handled.</li>
+    <li>VRML values arrive as objects: <code>SFVec3f</code> has <code>x</code>, <code>y</code>, <code>z</code> and methods like <code>add()</code>, <code>length()</code>, and <code>cross()</code>. <code>SFColor</code> has <code>r</code>, <code>g</code>, <code>b</code> and <code>setHSV()</code>. <code>SFRotation</code> can <code>multiply()</code>, <code>slerp()</code>, and rotate vectors with <code>multVec()</code>. MF types behave like arrays.</li>
+    <li><code>print()</code> writes to the console under the viewer. So does <code>Browser.print()</code>.</li>
+  </ul>
+
+  <figure class="example" id="ex-counter">
+    <figcaption><b>Example 8-1.</b> A box that counts</figcaption>
+    <script type="model/vrml">
+#VRML V2.0 utf8
+Viewpoint { position 0 0 7 }
+Background { skyColor 0.1 0.1 0.12 }
+
+Group {
+  children [
+    DEF Clicker TouchSensor { }
+    Shape {
+      appearance Appearance { material DEF Paint Material { diffuseColor 0.6 0.6 0.6 } }
+      geometry Box { size 1.6 1.6 1.6 }
+    }
+  ]
+}
+Transform {
+  translation 0 -1.6 0
+  children Shape {
+    appearance Appearance { material Material { diffuseColor 0 0 0 emissiveColor 1 1 0.85 } }
+    geometry DEF Label Text {
+      string "Click the box."
+      fontStyle FontStyle { justify "MIDDLE" size 0.45 family "SANS" }
+    }
+  }
+}
+
+DEF Counter Script {
+  eventIn  SFTime   clicked
+  eventOut SFColor  color_changed
+  eventOut MFString words
+  field    SFInt32  count 0
+
+  url "javascript:
+    function initialize() {
+      print('Counter is ready. ' + Browser.getName() + ', version ' + Browser.getVersion());
+    }
+
+    function clicked(value, timestamp) {
+      count = count + 1;
+      var c = new SFColor(0, 0, 0);
+      c.setHSV(Math.random() * 360, 0.75, 0.95);
+      color_changed = c;
+      words = new MFString('Clicked ' + count + (count == 1 ? ' time.' : ' times.'));
+      print('click ' + count + ' at t = ' + timestamp.toFixed(2));
+      if (count == 10) print('Ten clicks. In 1997 that was a whole evening.');
+    }
+  "
+}
+
+ROUTE Clicker.touchTime     TO Counter.clicked
+ROUTE Counter.color_changed TO Paint.set_diffuseColor
+ROUTE Counter.words         TO Label.set_string
+</script>
+  </figure>
+
+  <p>The script has a <code>field</code> called <code>count</code> that keeps its value between calls, which is how a script remembers things. Notice also that the whole program sits inside a VRML string, between double quotes, which is why the JavaScript uses single quotes. Escaping quotes inside quotes inside a 3D file was a rite of passage.</p>
+
+  <h3>Building the World from Code</h3>
+  <p>A script can also make new nodes. <code>Browser.createVrmlFromString()</code> parses VRML text and hands back the nodes, which you can send to a group's <code>addChildren</code> eventIn. To send events to a node directly, rather than through a route, the script needs an <code>SFNode</code> field pointing at it, and its <code>directOutput</code> field set to TRUE.</p>
+
+  <figure class="example" id="ex-stairs">
+    <figcaption><b>Example 8-2.</b> A spiral staircase, built at load time</figcaption>
+    <script type="model/vrml">
+#VRML V2.0 utf8
+NavigationInfo { type [ "EXAMINE", "ANY" ] }
+Viewpoint { position 0 3 11 orientation 1 0 0 -0.1 }
+Background { skyColor [ 0.9 0.88 0.82, 0.6 0.58 0.52 ] skyAngle 1.6 }
+
+Transform { translation 0 2.4 0 children Shape {
+  appearance Appearance { material Material { diffuseColor 0.3 0.3 0.32 } }
+  geometry Cylinder { radius 0.2 height 5 } } }
+
+DEF Stairs Group { }
+
+DEF Builder Script {
+  field SFNode  stairs USE Stairs
+  field SFInt32 steps 24
+  directOutput TRUE
+  url "javascript:
+    function initialize() {
+      var s = '';
+      for (var i = 0; i < steps; i++) {
+        var c = new SFColor(0, 0, 0);
+        c.setHSV(i * 15, 0.55, 0.9);
+        s += 'Transform { rotation 0 1 0 ' + (i * 0.42) +
+             ' children Transform { translation 1.1 ' + (i * 0.2) + ' 0' +
+             ' children Shape { appearance Appearance { material Material {' +
+             ' diffuseColor ' + c.r + ' ' + c.g + ' ' + c.b + ' } }' +
+             ' geometry Box { size 1.6 0.08 0.55 } } } }\n';
+      }
+      stairs.addChildren = Browser.createVrmlFromString(s);
+      print('Built ' + steps + ' steps. No carpenters were harmed.');
+    }
+  "
+}
+</script>
+  </figure>
+
+  <h3>Scripts Every Frame</h3>
+  <p>Route a looping TimeSensor's <code>time</code> eventOut into a script and the script runs on every frame. That is enough to do your own animation, simulation, or anything else that needs arithmetic. Here a script computes ripples on a pond and sends four hundred new heights to an <code>ElevationGrid</code>, many times a second.</p>
+
+  <figure class="example" id="ex-pond">
+    <figcaption><b>Example 8-3.</b> A pond, rippling under scripted control</figcaption>
+    <script type="model/vrml">
+#VRML V2.0 utf8
+NavigationInfo { type [ "EXAMINE", "ANY" ] }
+Viewpoint { position 0 4 7 orientation 1 0 0 -0.55 }
+Background { skyColor [ 0.1 0.15 0.3, 0.5 0.6 0.75 ] skyAngle 1.5 }
+
+Transform {
+  translation -2.85 0 -2.85
+  children Shape {
+    appearance Appearance {
+      material Material { diffuseColor 0.15 0.35 0.6 specularColor 0.9 0.9 1 shininess 0.7 }
+    }
+    geometry DEF Pond ElevationGrid {
+      xDimension 20 zDimension 20
+      xSpacing 0.3  zSpacing 0.3
+      creaseAngle 1.6
+      solid FALSE
+    }
+  }
+}
+
+DEF Tick TimeSensor { loop TRUE }
+
+DEF Waves Script {
+  eventIn  SFTime  tick
+  eventOut MFFloat heights
+  field    SFTime  t0 -1
+  url "vrmlscript:
+    function tick(now) {
+      if (t0 < 0) t0 = now;
+      var t = now - t0, n = 20, h = new MFFloat();
+      for (var j = 0; j < n; j++) {
+        for (var i = 0; i < n; i++) {
+          var x = (i - 9.5) * 0.3, z = (j - 9.5) * 0.3;
+          var r = Math.sqrt(x * x + z * z);
+          h[j * n + i] = 0.3 * Math.sin(r * 3.5 - t * 3) / (1 + r * 0.8);
+        }
+      }
+      heights = h;
+    }
+  "
+}
+ROUTE Tick.time      TO Waves.tick
+ROUTE Waves.heights  TO Pond.set_height
+</script>
+  </figure>
+
+  <p>That one says <code>vrmlscript:</code> at the top, for old times' sake.</p>
+
+  <h3>One More: A Clock</h3>
+  <p>Since <code>SFTime</code> counts seconds from 1970, the same way JavaScript's <code>Date</code> counts milliseconds, a script can tell the real time of day. This makes it the only VRML clock in this book that is right more than twice a day.</p>
+
+  <figure class="example" id="ex-clock">
+    <figcaption><b>Example 8-4.</b> A working wall clock</figcaption>
+    <script type="model/vrml">
+#VRML V2.0 utf8
+Viewpoint { position 0 0 6 }
+Background { skyColor 0.85 0.82 0.75 }
+
+# The face
+Transform { rotation 1 0 0 1.5708 children Shape {
+  appearance Appearance { material Material { diffuseColor 0.98 0.96 0.9 } }
+  geometry Cylinder { radius 2 height 0.1 } } }
+Transform { rotation 1 0 0 1.5708 translation 0 0 -0.05 children Shape {
+  appearance Appearance { material Material { diffuseColor 0.25 0.15 0.08 } }
+  geometry Cylinder { radius 2.2 height 0.1 } } }
+
+DEF Marks Group { }
+
+# The hands rotate around Z, about the center of the face
+DEF Hour Transform { translation 0 0 0.08 children Transform { translation 0 0.55 0 children Shape {
+  appearance DEF Ink Appearance { material Material { diffuseColor 0.08 0.08 0.08 } }
+  geometry Box { size 0.14 1.1 0.04 } } } }
+DEF Minute Transform { translation 0 0 0.12 children Transform { translation 0 0.8 0 children Shape {
+  appearance USE Ink geometry Box { size 0.09 1.6 0.04 } } } }
+DEF Second Transform { translation 0 0 0.16 children Transform { translation 0 0.75 0 children Shape {
+  appearance Appearance { material Material { diffuseColor 0.8 0.1 0.1 } }
+  geometry Box { size 0.03 1.8 0.02 } } } }
+
+DEF Tick TimeSensor { loop TRUE }
+
+DEF Works Script {
+  eventIn  SFTime     tick
+  eventOut SFRotation hourRot
+  eventOut SFRotation minuteRot
+  eventOut SFRotation secondRot
+  field    SFNode     marks USE Marks
+  directOutput TRUE
+  url "javascript:
+    function initialize() {
+      var s = '';
+      for (var i = 0; i < 12; i++) {
+        var a = i * Math.PI / 6;
+        s += 'Transform { rotation 0 0 1 ' + (-a) + ' children Transform { translation 0 1.75 0.06' +
+             ' children Shape { appearance Appearance { material Material { diffuseColor 0 0 0 } }' +
+             ' geometry Box { size 0.08 ' + (i % 3 == 0 ? 0.35 : 0.18) + ' 0.02 } } } }\n';
+      }
+      marks.addChildren = Browser.createVrmlFromString(s);
+    }
+    function tick(t) {
+      var d = new Date(t * 1000);
+      var s = d.getSeconds() + (t % 1);
+      var m = d.getMinutes() + s / 60;
+      var h = (d.getHours() % 12) + m / 60;
+      secondRot = new SFRotation(0, 0, 1, -s / 60 * 2 * Math.PI);
+      minuteRot = new SFRotation(0, 0, 1, -m / 60 * 2 * Math.PI);
+      hourRot   = new SFRotation(0, 0, 1, -h / 12 * 2 * Math.PI);
+    }
+  "
+}
+ROUTE Tick.time        TO Works.tick
+ROUTE Works.hourRot    TO Hour.set_rotation
+ROUTE Works.minuteRot  TO Minute.set_rotation
+ROUTE Works.secondRot  TO Second.set_rotation
+</script>
+  </figure>
+
+  <div class="tbl">
+  <div class="cap"><i><b>Table 8-1.</b> The Browser object, as implemented here</i></div>
+  <table>
+    <thead><tr><th>Method</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><code>getName()</code>, <code>getVersion()</code></td><td>Identify the browser. Ours answers truthfully.</td></tr>
+      <tr><td><code>getCurrentTime()</code></td><td>The current time, in VRML seconds.</td></tr>
+      <tr><td><code>getCurrentFrameRate()</code>, <code>getCurrentSpeed()</code></td><td>Frames per second; navigation speed.</td></tr>
+      <tr><td><code>getWorldURL()</code></td><td>The URL or file name of the current world.</td></tr>
+      <tr><td><code>createVrmlFromString(s)</code></td><td>Parse VRML text into an MFNode.</td></tr>
+      <tr><td><code>createVrmlFromURL(url, node, event)</code></td><td>Fetch and parse, then send the nodes to <code>node.event</code>.</td></tr>
+      <tr><td><code>addRoute(a, out, b, in)</code>, <code>deleteRoute(...)</code></td><td>Wire and unwire routes while running.</td></tr>
+      <tr><td><code>loadURL(urls, params)</code></td><td>Go somewhere else, like clicking an Anchor.</td></tr>
+      <tr><td><code>replaceWorld(nodes)</code></td><td>Swap out the whole scene.</td></tr>
+      <tr><td><code>setDescription(s)</code></td><td>Write a message on the status bar.</td></tr>
+      <tr><td><code>print(...)</code></td><td>Write to the console. Not in the spec, but every browser had it.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note" data-icon="warn"><p>Scripts run on the same thread as everything else, just like they did in 1997. A script containing <code>while (true) { }</code> will freeze this tab, then your patience, then possibly your browser. Save your work first.</p></div>
+</section>
+
+<!-- =============================== CHAPTER 9 =============================== -->
+<section class="page" id="ch9">
+  <div class="runhead"><span>Chapter 9: Prototypes</span><span class="folio"></span></div>
+  <div class="ch-open">
+    <div class="ch-label">Chapter <span class="n">9</span></div>
+    <h2>Prototypes</h2>
+    <p class="epigraph">If you write the same twelve lines three times, VRML would like a word.</p>
+  </div>
+
+  <p class="dropcap">The <code>PROTO</code> statement defines a new node type, written in VRML. You give it a name, an interface (the fields, eventIns, and eventOuts it should have), and a body made of ordinary nodes. Inside the body, the keyword <code>IS</code> connects a field of some inner node to a field of the interface. From then on you can use the new type exactly like a built-in one.</p>
+
+  <figure class="example" id="ex-proto">
+    <figcaption><b>Example 9-1.</b> Trees and blinking beacons, as new node types</figcaption>
+    <script type="model/vrml">
+#VRML V2.0 utf8
+NavigationInfo { type [ "EXAMINE", "ANY" ] headlight TRUE }
+Viewpoint { position 0 2.5 12 orientation 1 0 0 -0.15 }
+Background { skyColor [ 0.05 0.06 0.15, 0.35 0.3 0.45 ] skyAngle 1.6 }
+DirectionalLight { direction 0.3 -1 -0.5 intensity 0.6 }
+
+PROTO Tree [
+  field SFVec3f position 0 0 0
+  field SFFloat height   2.6
+  field SFColor leaves   0.15 0.45 0.2
+] {
+  Transform {
+    translation IS position
+    children [
+      Transform { translation 0 0.5 0 children Shape {
+        appearance Appearance { material Material { diffuseColor 0.4 0.25 0.12 } }
+        geometry Cylinder { radius 0.14 height 1 } } }
+      Transform { translation 0 2 0 children Shape {
+        appearance Appearance { material Material { diffuseColor IS leaves } }
+        geometry Cone { bottomRadius 0.9 height IS height } } }
+    ]
+  }
+}
+
+PROTO Beacon [
+  field        SFVec3f position 0 0 0
+  exposedField SFColor color    1 0.2 0.1
+  field        SFTime  period   1
+] {
+  Transform {
+    translation IS position
+    children [
+      Transform { translation 0 0.75 0 children Shape {
+        appearance Appearance { material Material { diffuseColor 0.8 0.8 0.8 } }
+        geometry Cylinder { radius 0.08 height 1.5 } } }
+      Transform { translation 0 1.6 0 children Shape {
+        appearance Appearance { material DEF Lens Material { diffuseColor 0.1 0.1 0.1 } }
+        geometry Sphere { radius 0.2 } } }
+    ]
+  }
+  DEF Pulse TimeSensor { cycleInterval IS period loop TRUE }
+  DEF Logic Script {
+    eventIn  SFFloat set_fraction
+    field    SFColor color IS color
+    eventOut SFColor glow
+    url "javascript:
+      function set_fraction(f) {
+        glow = f < 0.5 ? color : new SFColor(0.05, 0.05, 0.05);
+      }
+    "
+  }
+  ROUTE Pulse.fraction_changed TO Logic.set_fraction
+  ROUTE Logic.glow             TO Lens.set_emissiveColor
+}
+
+# Using them is the easy part
+Tree { position -4 0 -1 }
+Tree { position -2.5 0 -3 height 3.4 leaves 0.1 0.35 0.15 }
+Tree { position 3 0 -2 leaves 0.55 0.45 0.1 }
+Tree { position 4.5 0 0.5 height 2 }
+Beacon { position -1 0 1 }
+Beacon { position 0 0 1 color 0.2 1 0.3 period 0.7 }
+Beacon { position 1 0 1 color 0.3 0.5 1 period 1.6 }
+
+Shape {
+  appearance Appearance { material Material { diffuseColor 0.25 0.3 0.2 } }
+  geometry IndexedFaceSet {
+    coord Coordinate { point [ -7 0 -6, -7 0 5, 7 0 5, 7 0 -6 ] }
+    coordIndex [ 0 1 2 3 -1 ] }
+}
+</script>
+  </figure>
+
+  <p>Only the first node in a prototype's body is drawn. The rest (here, a <code>TimeSensor</code> and a <code>Script</code>) are alive and running but invisible, which makes the first node the prototype's "face" and the others its "brains." Each instance gets its own private copy of everything, including its own clock, which is why the three beacons blink at their own speeds.</p>
+
+  <h3>Borrowing from Other Files</h3>
+  <p><code>EXTERNPROTO</code> declares a prototype that lives in another file. You repeat the interface (without default values) and give a URL, with the prototype's name after a <code>#</code>. <code>Inline</code> is simpler still: it pulls in a whole other world and drops it into yours. Between them, VRML authors built shared libraries of parts years before anyone said "package manager."</p>
+
+  <figure class="example" id="ex-extern">
+    <figcaption><b>Example 9-2.</b> A world assembled from other files</figcaption>
+    <script type="model/vrml">
+#VRML V2.0 utf8
+NavigationInfo { type [ "EXAMINE", "ANY" ] headlight TRUE }
+Viewpoint { position 0 2.6 9 orientation 1 0 0 -0.15 }
+Background { skyColor [ 0.08 0.1 0.2, 0.4 0.4 0.5 ] skyAngle 1.6 }
+
+EXTERNPROTO Lamp [
+  field        SFVec3f position
+  exposedField SFColor glow
+  exposedField SFBool  on
+] "worlds/parts.wrl#Lamp"
+
+EXTERNPROTO Bench [
+  field SFVec3f    position
+  field SFRotation rotation
+  field SFColor    wood
+] "worlds/parts.wrl#Bench"
+
+# The gazebo comes from another file entirely
+Inline { url "worlds/gazebo.wrl" }
+
+Lamp  { position  2.8 0 2.2 }
+Lamp  { position -2.8 0 2.2 glow 0.6 0.8 1 }
+Bench { position  0 0 3.4 }
+Bench { position  3.2 0 -1.5 rotation 0 1 0 1.2 wood 0.35 0.2 0.1 }
+
+Shape {
+  appearance Appearance { material Material { diffuseColor 0.22 0.3 0.2 } }
+  geometry IndexedFaceSet {
+    coord Coordinate { point [ -8 0 -8, -8 0 8, 8 0 8, 8 0 -8 ] }
+    coordIndex [ 0 1 2 3 -1 ] }
+}
+</script>
+  </figure>
+
+  <div class="note" data-icon="tip"><p>The Workbench (Chapter 11) saves worlds into your browser's storage under names like <em>castle.wrl</em>. <code>Inline</code>, <code>Anchor</code>, and <code>EXTERNPROTO</code> can all refer to those names directly, so you can build a library of parts without a web server. Write <code>url "castle.wrl"</code> and the browser checks My Worlds before it looks anywhere else.</p></div>
+</section>
+
+<!-- =============================== CHAPTER 10 =============================== -->
+<section class="page" id="ch10">
+  <div class="runhead"><span>Chapter 10: VRML 1.0: The Separator Years</span><span class="folio"></span></div>
+  <div class="ch-open">
+    <div class="ch-label">Chapter <span class="n">10</span></div>
+    <h2>VRML 1.0: The Separator Years</h2>
+    <p class="epigraph">In VRML 1.0, a Material node is less a property and more a mood that settles over everything after it.</p>
+  </div>
+
+  <p class="dropcap">The first version of the language looks familiar at a glance: nodes, braces, fields. But it works in a completely different way. A VRML 1.0 file is a list of instructions for a machine that walks the tree from top to bottom, carrying a <span class="term">traversal state</span>: the current transformation, the current material, the current coordinates, and so on. A <code>Material</code> node does not belong to any shape. It changes the current material, and every shape drawn after it uses the new one, until something changes it again.</p>
+  <p>The <code>Separator</code> node is what keeps this sane. It saves the state on the way in and restores it on the way out, so whatever happens inside a Separator stays inside it. A typical 1.0 file is Separators all the way down.</p>
+
+  <figure class="example" id="ex-v1">
+    <figcaption><b>Example 10-1.</b> A VRML 1.0 world, as it might have looked in 1995</figcaption>
+    <script type="model/vrml">
+#VRML V1.0 ascii
+# Nothing moves in VRML 1.0. Nothing needs to.
+Separator {
+  Info { string "Made with a text editor and optimism" }
+  PerspectiveCamera { position 0 1.5 9 orientation 1 0 0 -0.12 }
+  DirectionalLight { direction -0.5 -1 -0.6 }
+
+  Separator {
+    Translation { translation -3 0.75 0 }
+    Material { diffuseColor 0.8 0.2 0.2 }
+    Cube { width 1.5 height 1.5 depth 1.5 }
+  }
+  Separator {
+    Translation { translation 0 0.9 0 }
+    Material { diffuseColor 0.2 0.55 0.9 specularColor 1 1 1 shininess 0.8 }
+    Sphere { radius 0.9 }
+  }
+  Separator {
+    Translation { translation 3 0.8 0 }
+    Material { diffuseColor 0.95 0.8 0.2 }
+    Cone { parts SIDES height 1.6 bottomRadius 0.8 }   # no bottom on this one
+  }
+
+  # A floor with one material per face
+  Separator {
+    Material { diffuseColor [ 0.9 0.9 0.88, 0.25 0.25 0.28 ] }
+    MaterialBinding { value PER_FACE_INDEXED }
+    Coordinate3 { point [ -5 0 -3, -5 0 3, 5 0 3, 5 0 -3, 0 0 -3, 0 0 3 ] }
+    IndexedFaceSet {
+      coordIndex    [ 0, 1, 5, 4, -1,  4, 5, 2, 3, -1 ]
+      materialIndex [ 0, 1 ]
+    }
+  }
+
+  Separator {
+    Translation { translation 0 2.6 0 }
+    Material { diffuseColor 0 0 0 emissiveColor 1 1 0.6 }
+    FontStyle { size 0.6 family SANS style BOLD }
+    AsciiText { string "Hello from 1995" justification CENTER }
+  }
+}
+</script>
+  </figure>
+
+  <p>Under the hood, this browser handles 1.0 by walking the tree exactly as described, with a stack of states, and writing out equivalent VRML 2.0 nodes as it goes. The cameras become <code>Viewpoint</code>s, each Material and shape becomes a <code>Shape</code> with its own <code>Appearance</code>, and the state machine evaporates. VRML 2.0's designers did essentially the same thing to the language itself.</p>
+
+  <h3>The Accumulating Staircase</h3>
+  <p>Here is something 1.0 can do that 2.0 cannot. A <code>Group</code>, unlike a <code>Separator</code>, does not save and restore the state. So if a Group contains a <code>Translation</code>, every time you <code>USE</code> that Group, the translation adds to the one before. The same node, used twelve times, lands in twelve different places.</p>
+
+  <figure class="example" id="ex-v1-stairs">
+    <figcaption><b>Example 10-2.</b> One step, used twelve times, climbs</figcaption>
+    <script type="model/vrml">
+#VRML V1.0 ascii
+Separator {
+  PerspectiveCamera { position -1 3.5 12 orientation 1 0 0 -0.12 }
+  DirectionalLight { direction -0.4 -1 -0.6 }
+  Material { diffuseColor 0.75 0.5 0.3 }
+  DEF Step Group {
+    Translation { translation 0.9 0.35 0 }
+    Rotation { rotation 0 1 0 0.45 }
+    Cube { width 1.4 height 0.15 depth 0.7 }
+  }
+  USE Step  USE Step  USE Step  USE Step  USE Step  USE Step
+  USE Step  USE Step  USE Step  USE Step  USE Step
+}
+</script>
+  </figure>
+
+  <p>This was considered a feature, then a bug, then a historical curiosity, which is the usual life cycle. VRML 2.0 made every node self-contained, and the staircase trick went the way of the dinosaurs.</p>
+
+  <div class="tbl">
+  <div class="cap"><i><b>Table 10-1.</b> VRML 1.0 nodes and their 2.0 descendants</i></div>
+  <table>
+    <thead><tr><th>VRML 1.0</th><th>VRML 2.0</th></tr></thead>
+    <tbody>
+      <tr><td><code>Separator</code></td><td><code>Group</code> or <code>Transform</code> (every 2.0 group is a separator)</td></tr>
+      <tr><td><code>Cube</code>, <code>AsciiText</code></td><td><code>Box</code>, <code>Text</code></td></tr>
+      <tr><td><code>Coordinate3</code>, <code>TextureCoordinate2</code></td><td><code>Coordinate</code>, <code>TextureCoordinate</code>, now inside the geometry</td></tr>
+      <tr><td><code>Material</code> + <code>MaterialBinding</code></td><td><code>Material</code> inside <code>Appearance</code>, plus a <code>Color</code> node</td></tr>
+      <tr><td><code>Translation</code>, <code>Rotation</code>, <code>Scale</code>, <code>MatrixTransform</code></td><td>fields of <code>Transform</code> (no free matrices any more)</td></tr>
+      <tr><td><code>PerspectiveCamera</code></td><td><code>Viewpoint</code></td></tr>
+      <tr><td><code>ShapeHints</code></td><td><code>ccw</code>, <code>solid</code>, <code>convex</code>, <code>creaseAngle</code> fields on the geometry</td></tr>
+      <tr><td><code>WWWAnchor</code>, <code>WWWInline</code></td><td><code>Anchor</code>, <code>Inline</code></td></tr>
+      <tr><td><code>Texture2</code></td><td><code>ImageTexture</code>, <code>PixelTexture</code></td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- =============================== CHAPTER 11: WORKBENCH =============================== -->
+<section class="page wide" id="workbench">
+  <div class="runhead"><span>Chapter 11: The Companion CD-ROM</span><span class="folio"></span></div>
+  <div class="ch-open">
+    <div class="ch-label">Chapter <span class="n">11</span></div>
+    <h2>The Companion CD-ROM</h2>
+    <p class="epigraph">System requirements: a web browser from this decade. 8 MB of RAM recommended. Sound card optional.</p>
+  </div>
+
+  <div class="frontis narrow">
+  <p class="dropcap">Every computer book of the period came with a disc in an envelope glued inside the back cover. This one comes with the VRML Workbench, which you'll find below, already installed. On the left is an editor; on the right, a viewer; underneath the viewer, a console where scripts print and errors complain.</p>
+  <ul>
+    <li>Press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (or the Run button) to load what you have written. If there's an error, the line is marked in red and the message appears in the status bar.</li>
+    <li><b>File</b> opens <code>.wrl</code> and <code>.wrl.gz</code> files from your disk (or drop one onto the window), saves to <em>My Worlds</em> in your browser's local storage, and downloads files plain or gzipped. Gzipped VRML was common in the 1990s, when every kilobyte cost real seconds.</li>
+    <li><b>Examples</b> has every listing in the book. <b>My Worlds</b> has everything you have saved.</li>
+    <li><b>World</b> can list the routes and DEF names of the running world, and has a live mode that reloads as you type, for the impatient.</li>
+    <li>Your last edit is kept automatically, so closing the tab does not lose your work. Nothing you write leaves your computer.</li>
+  </ul>
+  </div>
+
+  <div id="wb-host"></div>
+
+  <div class="narrow">
+  <h3>The Frontispiece</h3>
+  <p>The world that loads into the Workbench the first time you visit is also the frontispiece of this book. It uses most of what we've covered: a <code>PixelTexture</code> floor, a gradient <code>Background</code>, a twisting <code>Extrusion</code>, an orbiting sphere, color interpolation, a <code>Billboard</code>, and three viewpoints. Here it is in its natural habitat.</p>
+
+  <figure class="example" id="ex-frontispiece" data-height="420px">
+    <figcaption><b>Example 11-1.</b> The frontispiece</figcaption>
+    <script type="model/vrml">
+#VRML V2.0 utf8
+WorldInfo {
+  title "Frontispiece"
+  info [ "A checkered floor, a sky, and things that go around." ]
+}
+NavigationInfo { type [ "EXAMINE", "ANY" ] }
+Viewpoint { position 0 2.4 9.5 orientation 1 0 0 -0.16 description "Front door" }
+Viewpoint { position 8 2.6 8 orientation 0 1 0 0.785 description "Over by the corner" }
+Viewpoint { position 0 12 0.01 orientation 1 0 0 -1.5697 description "Bird's eye" }
+
+Background {
+  skyColor    [ 0.02 0.03 0.18, 0.18 0.3 0.7, 0.95 0.72 0.45 ]
+  skyAngle    [ 1.05, 1.571 ]
+  groundColor [ 0.08 0.06 0.05, 0.32 0.25 0.18 ]
+  groundAngle [ 1.571 ]
+}
+DirectionalLight { direction -0.4 -1 -0.5 intensity 0.7 }
+
+# The floor: a 2 x 2 PixelTexture, repeated eight times each way
+Shape {
+  appearance Appearance {
+    material Material { diffuseColor 1 1 1 }
+    texture PixelTexture { image 2 2 1  0xE8 0x30  0x30 0xE8 }
+    textureTransform TextureTransform { scale 8 8 }
+  }
+  geometry IndexedFaceSet {
+    coord Coordinate { point [ -8 0 -8, -8 0 8, 8 0 8, 8 0 -8 ] }
+    coordIndex [ 0 1 2 3 -1 ]
+    texCoord TextureCoordinate { point [ 0 1, 0 0, 1 0, 1 1 ] }
+  }
+}
+
+# A pedestal
+Transform {
+  translation 0 0.4 0
+  children Shape {
+    appearance Appearance { material Material { diffuseColor 0.6 0.6 0.62 specularColor 0.3 0.3 0.3 } }
+    geometry Cylinder { radius 0.9 height 0.8 }
+  }
+}
+
+# A star, extruded upward with a twist and a taper
+DEF Star Transform {
+  translation 0 0.8 0
+  children Shape {
+    appearance Appearance {
+      material DEF StarPaint Material { diffuseColor 0.85 0.15 0.1 specularColor 1 1 1 shininess 0.5 }
+    }
+    geometry Extrusion {
+      crossSection [ 0 0.6, -0.147 0.202, -0.571 0.185, -0.238 -0.077, -0.353 -0.485,
+                     0 -0.25, 0.353 -0.485, 0.238 -0.077, 0.571 0.185, 0.147 0.202, 0 0.6 ]
+      spine       [ 0 0 0, 0 0.6 0, 0 1.2 0, 0 1.8 0, 0 2.4 0 ]
+      scale       [ 1 1, 1.3 1.3, 1.1 1.1, 0.7 0.7, 0.15 0.15 ]
+      orientation [ 0 1 0 0, 0 1 0 0.4, 0 1 0 0.8, 0 1 0 1.2, 0 1 0 1.6 ]
+    }
+  }
+}
+
+# A moon in orbit
+DEF Moon Transform {
+  children Shape {
+    appearance Appearance { material Material { diffuseColor 0.9 0.9 0.8 emissiveColor 0.25 0.25 0.2 } }
+    geometry Sphere { radius 0.35 }
+  }
+}
+
+# A sign that always faces you
+Transform {
+  translation 0 4.2 0
+  children Billboard {
+    children Shape {
+      appearance Appearance { material Material { diffuseColor 0 0 0 emissiveColor 1 0.95 0.8 } }
+      geometry Text {
+        string "VRML 97"
+        fontStyle FontStyle { family "SERIF" style "BOLDITALIC" justify "MIDDLE" size 0.9 }
+      }
+    }
+  }
+}
+
+DEF Clock TimeSensor { cycleInterval 8 loop TRUE }
+DEF Turn OrientationInterpolator {
+  key      [ 0, 0.333, 0.667, 1 ]
+  keyValue [ 0 1 0 0, 0 1 0 2.094, 0 1 0 4.189, 0 1 0 6.283 ]
+}
+DEF Orbit PositionInterpolator {
+  key      [ 0 0.125 0.25 0.375 0.5 0.625 0.75 0.875 1 ]
+  keyValue [ 0 1.3 2.6, 1.838 1.7 1.838, 2.6 1.3 0, 1.838 0.9 -1.838, 0 1.3 -2.6,
+             -1.838 1.7 -1.838, -2.6 1.3 0, -1.838 0.9 1.838, 0 1.3 2.6 ]
+}
+DEF Paint ColorInterpolator {
+  key      [ 0, 0.33, 0.66, 1 ]
+  keyValue [ 0.85 0.15 0.1, 0.95 0.75 0.1, 0.15 0.4 0.85, 0.85 0.15 0.1 ]
+}
+ROUTE Clock.fraction_changed TO Turn.set_fraction
+ROUTE Clock.fraction_changed TO Orbit.set_fraction
+ROUTE Clock.fraction_changed TO Paint.set_fraction
+ROUTE Turn.value_changed  TO Star.set_rotation
+ROUTE Orbit.value_changed TO Moon.set_translation
+ROUTE Paint.value_changed TO StarPaint.set_diffuseColor
+</script>
+  </figure>
+
+  <h3>Things to Try</h3>
+  <ol>
+    <li>Change the <code>cycleInterval</code> of the <code>Clock</code> and press <kbd>Ctrl</kbd>+<kbd>Enter</kbd>.</li>
+    <li>Delete one of the <code>ROUTE</code> lines and see which part stops moving.</li>
+    <li>Add a <code>TouchSensor</code> next to the star and make the moon stop when you click it. (Hint: route <code>touchTime</code> to the clock's <code>set_stopTime</code>.)</li>
+    <li>Save your world to My Worlds as <em>moon.wrl</em>, start a new file, and write <code>Inline { url "moon.wrl" }</code>.</li>
+    <li>Make a mistake on purpose. Misspell a node name. The error message tells you the line and column, which is more than most of us got in 1996.</li>
+  </ol>
+  </div>
+</section>
+
+<!-- =============================== APPENDIX A =============================== -->
+<section class="page" id="appA">
+  <div class="runhead"><span>Appendix A: Node Reference</span><span class="folio"></span></div>
+  <div class="ch-open">
+    <div class="ch-label">Appendix <span class="n">A</span></div>
+    <h2>Node Reference</h2>
+  </div>
+  <p>This appendix lists the interface of every VRML 2.0 node this browser knows about: each field's kind, type, name, and default value, in the same notation the specification uses. It is generated when the page loads, from the very tables the parser uses, so it cannot drift out of date. For what each field <em>means</em>, the specification remains the authority; see <a href="#appC">Appendix C</a>.</p>
+  <p>Nodes marked <i>partial</i> are parsed and accepted but not everything about them works. The note under each says what's missing.</p>
+  <div id="ref-host"></div>
+</section>
+
+<!-- =============================== APPENDIX B =============================== -->
+<section class="page" id="appB">
+  <div class="runhead"><span>Appendix B: Inside This Browser</span><span class="folio"></span></div>
+  <div class="ch-open">
+    <div class="ch-label">Appendix <span class="n">B</span></div>
+    <h2>Inside This Browser</h2>
+  </div>
+
+  <p class="dropcap">The engine behind this book is a little over four thousand lines of plain JavaScript modules, with no dependencies and no build step. You can read all of it in the <em>js/vrml</em> folder. Here is the tour.</p>
+
+  <h4>The parser (parser.js)</h4>
+  <p>A tokenizer splits the file into words, strings, and brackets, treating commas as whitespace (as the spec says) and remembering line and column numbers for error messages. A recursive-descent parser then reads statements. It knows the type of every field from the node tables, which it needs, because VRML values carry no type markers: <code>1 0 0</code> could be a color, a vector, or three separate floats, and only the field knows. The built-in node table in <em>nodes.js</em> is written in the spec's own interface syntax and parsed at startup by the same parser, which is a nice test that the parser works.</p>
+  <p><code>PROTO</code> bodies are stored as token lists and parsed fresh for each instance, with <code>IS</code> wiring the inner nodes to the instance's interface. VRML 1.0 uses the same tokenizer and parser with a different node table, then goes through the converter in <em>v1.js</em>.</p>
+
+  <h4>The runtime (world.js, behaviors.js)</h4>
+  <p>Routes are stored in a map keyed by source node and field. Sending an event to a node stores the value (for exposedFields), passes it to that node type's behavior (an interpolator computes its output, a TimeSensor starts or stops), and then follows every route out of the node. Each route remembers the timestamp of the last event it carried and refuses a second one with the same stamp, which is the spec's loop-breaking rule in one line of code. Bindable nodes live on stacks, one per type.</p>
+
+  <h4>Scripts (script.js)</h4>
+  <p>Script source is compiled with the <code>Function</code> constructor and run inside a <code>with</code> block whose scope object is a JavaScript <code>Proxy</code>. Reading a name that matches a script field returns that field, converted to an <code>SFVec3f</code>, <code>SFColor</code>, or whatever its type is; assigning to it queues an event. The <code>with</code> statement is forbidden in modern strict-mode code, and there is something pleasing about using it to emulate 1997 scoping rules. After a function returns, any field objects it modified in place are noticed and sent as well.</p>
+
+  <h4>Geometry (geometry.js)</h4>
+  <p>Every geometry node becomes a flat list of triangles with positions, normals, colors, and texture coordinates. <code>ElevationGrid</code> and <code>Extrusion</code> generate face-set data and go through the same code as <code>IndexedFaceSet</code>, including crease-angle smoothing and ear-clipping for non-convex polygons. <code>Text</code> is drawn into a canvas and mapped onto a rectangle. Results are cached and rebuilt only when a field changes.</p>
+
+  <h4>Rendering (renderer.js)</h4>
+  <p>Each frame walks the scene graph, collecting shapes with their transforms, the lights in scope for each, and the pointing-device sensors above each. The shader is WebGL 2 and computes the VRML97 lighting equation per pixel: emissive, plus ambient, diffuse, and specular for each light, with attenuation and spotlight falloff, then linear or exponential fog. Real browsers of the period computed lighting per vertex, which is why big flat floors never showed a spotlight. We cheat in your favor.</p>
+
+  <h4>Picking and navigation (viewer.js)</h4>
+  <p>Mouse clicks become rays, tested against every triangle on the CPU after a bounding-box check. A hit tells us which sensors to wake. Navigation keeps the camera as an offset from the bound <code>Viewpoint</code>, so animated viewpoints carry you along, and jumps between viewpoints are blended over a fraction of a second.</p>
+
+  <h4>What's missing</h4>
+  <ul>
+    <li>Collision detection and terrain following. You can walk through walls and off cliffs.</li>
+    <li>Spatialized sound. <code>AudioClip</code> plays, but not from anywhere in particular.</li>
+    <li><code>MovieTexture</code> and the image URLs of <code>Background</code> panoramas.</li>
+    <li>Java scripting, and the External Authoring Interface that let Java applets on a page talk to a world.</li>
+  </ul>
+</section>
+
+<!-- =============================== APPENDIX C =============================== -->
+<section class="page" id="appC">
+  <div class="runhead"><span>Appendix C: Further Reading</span><span class="folio"></span></div>
+  <div class="ch-open">
+    <div class="ch-label">Appendix <span class="n">C</span></div>
+    <h2>Further Reading</h2>
+  </div>
+
+  <h4>Specifications</h4>
+  <ul>
+    <li><em>The Virtual Reality Modeling Language</em>, ISO/IEC 14772-1:1997, published online by the Web3D Consortium at <a href="https://www.web3d.org/documents/specifications/14772/V2.0/index.html" rel="noopener">web3d.org</a>. This is VRML97, the authoritative description of everything in this book.</li>
+    <li>The X3D specifications, VRML's successor, also at <a href="https://www.web3d.org/" rel="noopener">web3d.org</a>.</li>
+  </ul>
+
+  <h4>Books of the Period</h4>
+  <p>These are real books. Some are out of print, and all of them are easier to find second-hand than you might think.</p>
+  <ul>
+    <li>Rikk Carey and Gavin Bell, <em>The Annotated VRML 2.0 Reference Manual</em>. Addison-Wesley, 1997. The spec, with the reasons behind it.</li>
+    <li>Jed Hartman and Josie Wernecke, <em>The VRML 2.0 Handbook: Building Moving Worlds on the Web</em>. Addison-Wesley, 1996.</li>
+    <li>Andrea L. Ames, David R. Nadeau, and John L. Moreland, <em>VRML 2.0 Sourcebook</em>. Wiley, 1997.</li>
+    <li>Mark Pesce, <em>VRML: Browsing and Building Cyberspace</em>. New Riders, 1995. Covers 1.0, and the dream behind it.</li>
+    <li>Josie Wernecke, <em>The Inventor Mentor</em>. Addison-Wesley, 1994. Where the scene graph came from.</li>
+  </ul>
+</section>
+
+<!-- =============================== COLOPHON =============================== -->
+<section class="page colophon" id="colophon">
+  <div class="runhead"><span>Colophon</span><span class="folio"></span></div>
+  <div class="ch-open">
+    <div class="ch-label">Colophon</div>
+    <h2>About the Cover</h2>
+  </div>
+  <p class="dropcap">The animal on the cover of <em>VRML 2.0: The Annotated Homage</em> is a chambered nautilus, <em>Nautilus pompilius</em>, shown in cross section. The nautilus lives in the deep slopes of coral reefs in the Indo-Pacific and has been doing so, in one form or another, for a very long time. Its shell is divided into a spiral of chambers. As the animal grows it builds a new, larger chamber, moves into it, and seals off the old one behind a wall. A tube called the siphuncle runs back through all the old chambers, letting the nautilus adjust the gas and liquid inside them to rise and sink.</p>
+  <p>We chose it because it seemed right for a book about a language that kept building a bigger room and moving into it: Inventor, then VRML 1.0, then 2.0, then VRML97, then X3D, with a thread running back through every one of them.</p>
+  <p>The cover engraving was not drawn by hand. It is generated by about a hundred lines of JavaScript every time the page loads, from a logarithmic spiral and some patience.</p>
+
+  <h3>Typography</h3>
+  <p>The body text is set in whatever Palatino your computer has, falling back to Georgia; headings in a Garamond, if one can be found. Code is set in Courier, because of course it is. The control bars on the viewers are set in the system font of a popular 1995 operating system, or the closest thing your machine can manage.</p>
+
+  <h3>About This Edition</h3>
+  <p>This is an unofficial, non-commercial, educational tribute. It is not affiliated with, sponsored by, or endorsed by ISO, the IEC, the Web3D Consortium, or any company or person mentioned in it. VRML is an international standard; the specification text belongs to its publishers and is not reproduced here. Product and company names mentioned in the history chapter are trademarks of their respective owners and appear only to tell the story accurately. "Pandymic Press" is not a real publisher; it is a website with ideas above its station.</p>
+  <p class="fine">The source code for this book and its VRML browser is available under the MIT License. See the <em>LICENSE</em> file that accompanies it.</p>
+  <hr class="orn">
+  <p class="center"><a href="#top">Back to the cover</a></p>
+</section>
+
+<script type="module" src="js/book.js"></script>
+</body>
+</html>
