@@ -5,9 +5,9 @@
 // equivalent VRML 2.0 nodes. Static scenes only, which is fine, because
 // VRML 1.0 had no way to move anything anyway.
 
-import { Schema } from './node.js';
-import { mat4 } from './math.js';
-import { cloneValue } from './fields.js';
+import { Schema } from './node.js?v=7fee4c555e';
+import { mat4 } from './math.js?v=f2166ec675';
+import { cloneValue } from './fields.js?v=faf24e7990';
 
 const f = (type, name, value) => ({ kind: 'field', type, name, value });
 

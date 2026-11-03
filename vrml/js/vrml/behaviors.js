@@ -2,8 +2,8 @@
 // bindables. Rendering lives elsewhere; this is the "what happens when an
 // event shows up" part.
 
-import { quat, mat4 } from './math.js';
-import { cloneValue } from './fields.js';
+import { quat, mat4 } from './math.js?v=f2166ec675';
+import { cloneValue } from './fields.js?v=faf24e7990';
 
 // ---------- interpolators ----------
 function segment(key, f) {

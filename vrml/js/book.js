@@ -1,11 +1,11 @@
 // Wires the book together: cover art, listings, live examples, the
 // Workbench, and the generated node reference.
 
-import { Viewer } from './vrml/viewer.js';
-import { Editor, highlight } from './editor.js';
-import { library, libraryFetch, download, downloadGzip, readFile, normalize } from './library.js';
-import { builtinSchemas, SUPPORT } from './vrml/nodes.js';
-import { formatValue } from './vrml/fields.js';
+import { Viewer } from './vrml/viewer.js?v=83941bf571';
+import { Editor, highlight } from './editor.js?v=217035960c';
+import { library, libraryFetch, download, downloadGzip, readFile, normalize } from './library.js?v=182f7e837a';
+import { builtinSchemas, SUPPORT } from './vrml/nodes.js?v=c25d7a32a3';
+import { formatValue } from './vrml/fields.js?v=faf24e7990';
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];

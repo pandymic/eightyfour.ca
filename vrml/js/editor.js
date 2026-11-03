@@ -1,8 +1,8 @@
 // A plain textarea with a syntax-colored <pre> underneath it and a line
 // number gutter. Nothing clever. It does not need to be.
 
-import { V2_NODES } from './vrml/nodes.js';
-import { V1_NODE_NAMES } from './vrml/v1.js';
+import { V2_NODES } from './vrml/nodes.js?v=c25d7a32a3';
+import { V1_NODE_NAMES } from './vrml/v1.js?v=247bf7f156';
 
 const NODE_NAMES = new Set([...Object.keys(V2_NODES), ...V1_NODE_NAMES]);
 const KEYWORDS = new Set(['DEF', 'USE', 'PROTO', 'EXTERNPROTO', 'ROUTE', 'TO', 'IS', 'NULL', 'TRUE', 'FALSE']);

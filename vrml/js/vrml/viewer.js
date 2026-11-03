@@ -1,10 +1,10 @@
 // The viewer: a canvas, a control bar that looks like it shipped on a
 // CD-ROM, navigation, pointing-device sensors and a console.
 
-import { World, nowSeconds } from './world.js';
-import { Renderer } from './renderer.js';
-import { mat4, vec3, quat } from './math.js';
-import { VRMLError } from './parser.js';
+import { World, nowSeconds } from './world.js?v=a2755cdd91';
+import { Renderer } from './renderer.js?v=836dc0021a';
+import { mat4, vec3, quat } from './math.js?v=f2166ec675';
+import { VRMLError } from './parser.js?v=3a1f1700f9';
 
 const el = (tag, cls, text) => {
   const e = document.createElement(tag);

@@ -7,9 +7,9 @@
 // and a with() statement, which is exactly the sort of thing you could get
 // away with in 1997.
 
-import { isMF, sfOf, defaultValue, cloneValue, valuesEqual } from './fields.js';
-import { quat, hsvToRgb, rgbToHsv } from './math.js';
-import { Node, ProtoInstance } from './node.js';
+import { isMF, sfOf, defaultValue, cloneValue, valuesEqual } from './fields.js?v=faf24e7990';
+import { quat, hsvToRgb, rgbToHsv } from './math.js?v=f2166ec675';
+import { Node, ProtoInstance } from './node.js?v=7fee4c555e';
 
 const RAW = Symbol('vrmlNode');
 

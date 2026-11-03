@@ -2,12 +2,12 @@
 // lights and sensors, then draws with a per-pixel version of the VRML97
 // lighting equation (section 4.14 of the spec, if you have it handy).
 
-import { mat4, vec3, quat, rotationToMat } from './math.js';
-import { ProtoInstance } from './node.js';
+import { mat4, vec3, quat, rotationToMat } from './math.js?v=f2166ec675';
+import { ProtoInstance } from './node.js?v=7fee4c555e';
 import {
   buildFaceSet, buildBox, buildSphere, buildCylinder, buildCone,
   buildElevationGrid, buildExtrusion, buildLineSet, buildPointSet, buildText,
-} from './geometry.js';
+} from './geometry.js?v=75be9ac128';
 
 const MAX_LIGHTS = 8;
 

@@ -3,8 +3,8 @@
 // tokens and re-parse it for every instance) and IS, which wires a field
 // inside a prototype body to the interface of the instance.
 
-import { isMF, sfOf, cloneValue, defaultValue } from './fields.js';
-import { Schema, ProtoInstance, addIsIn, addIsOut } from './node.js';
+import { isMF, sfOf, cloneValue, defaultValue } from './fields.js?v=faf24e7990';
+import { Schema, ProtoInstance, addIsIn, addIsOut } from './node.js?v=7fee4c555e';
 
 export class VRMLError extends Error {
   constructor(msg, tok) {

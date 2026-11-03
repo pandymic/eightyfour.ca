@@ -1,4 +1,4 @@
-import { cloneValue, defaultValue } from './fields.js';
+import { cloneValue, defaultValue } from './fields.js?v=faf24e7990';
 
 // A schema is the interface of a node type: an ordered map of
 // name -> { kind, type, name, value }. kind is one of

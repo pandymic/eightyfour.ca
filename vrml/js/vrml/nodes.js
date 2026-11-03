@@ -2,8 +2,8 @@
 // spec uses. We parse this text at startup with our own parser, which is a
 // nice way to find out early if the parser is broken.
 
-import { parseInterfaceText } from './parser.js';
-import { Schema } from './node.js';
+import { parseInterfaceText } from './parser.js?v=3a1f1700f9';
+import { Schema } from './node.js?v=7fee4c555e';
 
 const GROUP = `
   eventIn MFNode addChildren

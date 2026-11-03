@@ -2,13 +2,13 @@
 // Routes, the event cascade, bindable node stacks, time, and the loading of
 // Inline and EXTERNPROTO content.
 
-import { Node, ProtoInstance } from './node.js';
-import { builtinSchemas } from './nodes.js';
-import { tokenize, Parser, Scope, detectVersion, VRMLError, instantiateProtoBody } from './parser.js';
-import { cloneValue } from './fields.js';
-import { BEHAVIORS } from './behaviors.js';
-import { ScriptRunner } from './script.js';
-import { v1Schemas, convertV1 } from './v1.js';
+import { Node, ProtoInstance } from './node.js?v=7fee4c555e';
+import { builtinSchemas } from './nodes.js?v=c25d7a32a3';
+import { tokenize, Parser, Scope, detectVersion, VRMLError, instantiateProtoBody } from './parser.js?v=3a1f1700f9';
+import { cloneValue } from './fields.js?v=faf24e7990';
+import { BEHAVIORS } from './behaviors.js?v=e9b41b54cb';
+import { ScriptRunner } from './script.js?v=bb76671b3e';
+import { v1Schemas, convertV1 } from './v1.js?v=247bf7f156';
 
 export const BINDABLE = ['Viewpoint', 'NavigationInfo', 'Background', 'Fog'];
 

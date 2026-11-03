@@ -2,7 +2,7 @@
 // ready for the GPU. Everything funnels through buildFaceSet(), including
 // ElevationGrid and Extrusion, which are just face sets wearing a hat.
 
-import { vec3, quat } from './math.js';
+import { vec3, quat } from './math.js?v=f2166ec675';
 
 const TAU = Math.PI * 2;
 
