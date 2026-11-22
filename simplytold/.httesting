@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "title": "Test Simply Told on Android",
+  "intro": "Simply Told is in closed testing on Google Play. Ask to join with the Google account you use on your Android phone or tablet. Once you're added, an e-mail brings you the links to join the test and install the app.",
+  "subject": "Join the test: {email}",
+  "replyTo": "email",
+  "name": "name",
+  "submit": "Ask to join",
+  "fields": [
+    {
+      "id": "email",
+      "type": "email",
+      "label": "Google account e-mail",
+      "hint": "The account you use for Google Play on your Android device, usually a Gmail address.",
+      "required": true,
+      "maxLength": 254,
+      "autocomplete": "email"
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "label": "Name",
+      "maxLength": 64,
+      "autocomplete": "name"
+    },
+    {
+      "id": "device",
+      "type": "text",
+      "label": "Device and Android version",
+      "hint": "For example: Pixel 8, Android 15.",
+      "maxLength": 120,
+      "autocomplete": "off"
+    },
+    {
+      "id": "consent",
+      "type": "checkbox",
+      "label": "Share this address with Google, so it can be added to the test.",
+      "required": true
+    }
+  ]
+}
